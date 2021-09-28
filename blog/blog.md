@@ -8,3 +8,5 @@
 ## Recent Posts
 
 - [SwiftLet #01: Variables](posts/swiftlet-01-variables.md)
+
+### [All Posts](posts)
