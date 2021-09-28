@@ -1,6 +1,6 @@
 # Home
 
-## | Home | [About Us]() | [Blog]() | [Projects]() | [GitHub]() |
+## | Home | [About Us]() | [Blog](blog/blog.md) | [Projects]() | [GitHub]() |
 
 // Header Image HERE
 
