@@ -11,7 +11,7 @@ Cranberry spritzer roasted brussel sprouts cozy cinnamon oatmeal tahini drizzle 
 ## Featured Posts
 
 - [SwiftLet #01: Variables](blog/posts/swiftlet-01-variables.md)
-- [An Intro into ScreenData in 2021](blog/posts/an-introi-into-screendata-in-2021.md)
+- [An Intro into ScreenData in 2021](blog/posts/an-intro-into-screendata-in-2021.md)
 - [Some Featured Post!](blog/posts)
 
 ****
