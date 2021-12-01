@@ -13,10 +13,11 @@ Since ScreenData is a data model, any programming language can implement it! Cur
 
 After you have chosen your preferred ScreenData implementation, you can start deciding how you will get some **Screen** and optionally store it.  For instance here are some examples.
 
-
 - Storing the ScreenData or JSON locally to be able to fetch it instantly
 - Fetching the data from a server
 - Fetch the data from a server, but then cache a local version of the data until some indeterminate time in the future
 
+
+## ScreenDataUI and CustomView
 
 All of these decisions are influenced by what ScreenDataUI implementation you choose.  Currently there are two implementations of ScreenDataUI, [iOS (SwiftUI)](https://github.com/ServerDriven/ScreenDataUI-ios) and [Android (Compose)](https://github.com/ServerDriven/ScreenDataUI-android).  These implementations are intended to be a 1:1 implementation of ScreenData for mobile. Not all implementations use everything that ScreenData has to offer. If you find ScreenData doesn’t have what you need, you can always use a **CustomView**. When using a **CustomView**, the front end will need to have its own implementation of the view. **CustomViews** should use an id so that the front end can tell what to display. 

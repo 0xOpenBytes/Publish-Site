@@ -32,7 +32,7 @@ try OpenBytesSite()
             .installPlugin(.splash(withClassPrefix: "")),
             .addMarkdownFiles(),
             .copyResources(),
-            .generateHTML(withTheme: .foundation),
+            .generateHTML(withTheme: .openBytes),
             .generateRSSFeed(including: [.posts]),
             .generateSiteMap(),
             .deploy(using: .gitHub("0xOpenBytes/0xopenbytes.github.io"))
