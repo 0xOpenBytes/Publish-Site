@@ -4,7 +4,7 @@ import Plot
 import SplashPublishPlugin
 
 // This type acts as the configuration for your website.
-struct PublishSite: Website {
+struct OpenBytesSite: Website {
     enum SectionID: String, WebsiteSectionID {
         // Add the sections that you want your website to contain here:
         case posts
@@ -26,7 +26,7 @@ struct PublishSite: Website {
 }
 
 // This will generate your website using the built-in Foundation theme:
-try PublishSite()
+try OpenBytesSite()
     .publish(
         using: [
             .installPlugin(.splash(withClassPrefix: "")),
