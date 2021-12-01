@@ -20,6 +20,15 @@
         }
       },
       {
+        "package": "HighlightJSPublishPlugin",
+        "repositoryURL": "https://github.com/alex-ross/highlightjspublishplugin",
+        "state": {
+          "branch": null,
+          "revision": "d06241336939f0538b1e5982d4cbef2eb8d9dbb4",
+          "version": "1.0.0"
+        }
+      },
+      {
         "package": "Ink",
         "repositoryURL": "https://github.com/johnsundell/ink.git",
         "state": {
@@ -53,24 +62,6 @@
           "branch": null,
           "revision": "e1577acf2b6e90086d01a6d5e2b8efdaae033568",
           "version": "2.3.0"
-        }
-      },
-      {
-        "package": "Splash",
-        "repositoryURL": "https://github.com/johnsundell/splash.git",
-        "state": {
-          "branch": null,
-          "revision": "7f4df436eb78fe64fe2c32c58006e9949fa28ad8",
-          "version": "0.16.0"
-        }
-      },
-      {
-        "package": "SplashPublishPlugin",
-        "repositoryURL": "https://github.com/johnsundell/splashpublishplugin",
-        "state": {
-          "branch": null,
-          "revision": "34bb50bd83b2a40c63afc35f090c76619dc149ce",
-          "version": "0.1.0"
         }
       },
       {

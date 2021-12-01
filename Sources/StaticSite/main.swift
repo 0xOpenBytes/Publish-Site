@@ -1,7 +1,7 @@
 import Foundation
 import Publish
 import Plot
-import SplashPublishPlugin
+import HighlightJSPublishPlugin
 
 // This type acts as the configuration for your website.
 struct OpenBytesSite: Website {
@@ -29,7 +29,7 @@ struct OpenBytesSite: Website {
 try OpenBytesSite()
     .publish(
         using: [
-            .installPlugin(.splash(withClassPrefix: "")),
+            .installPlugin(.highlightJS()),
             .addMarkdownFiles(),
             .copyResources(),
             .generateHTML(withTheme: .openBytes),
