@@ -1,0 +1,33 @@
+name: Publish
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+
+    steps:
+    - uses: actions/checkout@v2
+  
+    - name: Generate blog
+      run: swift run Blog
+    - name: Publish in github pages repo
+      uses: crazy-max/ghaction-github-pages@v1.4.0
+      with:
+        repo: 0xOpenBytes/0xopenbytes.github.io
+        target_branch: master
+        keep_history: true
+        allow_empty_commit: false
+        build_dir: Output
+        committer_name: 0xOpenBytes 
+        commit_message: Update blog content
+      env:
+        GITHUB_PAT: ${{ secrets.REPO_TOKEN }}
+        
+    - name: Add & Commit changes
+      uses: EndBug/add-and-commit@v4.0.1
+      with:
+        author_name: 0xOpenBytes
+        message: Commit new output
