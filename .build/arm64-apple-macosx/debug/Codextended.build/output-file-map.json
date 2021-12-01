@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Codextended.build/master.swiftdeps"
+  },
+  "/Users/0xleif/Development/StaticSite/.build/checkouts/codextended/Sources/Codextended/Codextended.swift": {
+    "dependencies": "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Codextended.build/Codextended.d",
+    "object": "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Codextended.build/Codextended.swift.o",
+    "swiftmodule": "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Codextended.build/Codextended~partial.swiftmodule",
+    "swift-dependencies": "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Codextended.build/Codextended.swiftdeps"
+  }
+}

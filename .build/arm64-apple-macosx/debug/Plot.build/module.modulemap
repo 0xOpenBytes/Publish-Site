@@ -1,0 +1,4 @@
+module Plot {
+    header "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Plot.build/Plot-Swift.h"
+    requires objc
+}

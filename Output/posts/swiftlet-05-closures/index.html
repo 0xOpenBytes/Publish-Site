@@ -1,0 +1,30 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"/><meta name="og:site_name" content="OpenBytes"/><link rel="canonical" href="https://0xopenbytes.github.io/posts/swiftlet-05-closures"/><meta name="twitter:url" content="https://0xopenbytes.github.io/posts/swiftlet-05-closures"/><meta name="og:url" content="https://0xopenbytes.github.io/posts/swiftlet-05-closures"/><title>SwiftLet #05: Closures | OpenBytes</title><meta name="twitter:title" content="SwiftLet #05: Closures | OpenBytes"/><meta name="og:title" content="SwiftLet #05: Closures | OpenBytes"/><meta name="description" content="SwiftLet #04"/><meta name="twitter:description" content="SwiftLet #04"/><meta name="og:description" content="SwiftLet #04"/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to OpenBytes"/></head><body class="item-page"><header><div class="wrapper"><a href="/" class="site-name">OpenBytes</a><nav><ul><li><a href="/posts" class="selected">Posts</a></li><li><a href="/about">About</a></li><li><a href="/projects">Projects</a></li><li><a href="/github">Github</a></li></ul></nav></div></header><div class="wrapper"><article><div class="content"><h1>SwiftLet #05: Closures</h1><p><em>Input and Output</em></p><p>A Closure is a block of code that can be executed by reference of a variable or name. Closures in Swift are normally unnamed and passed in as a parameter variable or stored as a variable. Functions are named blocks of code, they can also be passed in as a parameter for a Closure type.</p><p><strong>Closure Type</strong> The most basic Closure type you can have is one that doesn’t take any parameter variables (input) and doesn’t return (output) anything. This Closure type is common and is know as the Void to Void closure.</p><pre><code><span class="keyword">let</span> closure: () -&gt; <span class="type">Void</span>
+</code></pre><p>The type of this closure denotes that it doesn’t take any parameters, <code>()</code>, and returns <code>Void</code> which every Closure in Swift, which doesn’t return a specified type, happens to return <code>Void</code>.</p><p>Another example for a Closure type could be one that takes in some <code>Int</code> and returns some <code>String</code>.</p><pre><code><span class="keyword">let</span> closure: (<span class="type">Int</span>) -&gt; <span class="type">String</span>
+
+closure = { times <span class="keyword">in</span>
+    <span class="type">String</span>(repeating: <span class="string">"🧱"</span>, count: times)
+}
+
+<span class="keyword">func</span> function(times: <span class="type">Int</span>) -&gt; <span class="type">String</span> {
+    <span class="type">String</span>(repeating: <span class="string">"🧱"</span>, count: times)
+}
+
+<span class="call">print</span>(<span class="call">closure</span>(<span class="number">3</span>)) <span class="comment">// 🧱🧱🧱</span>
+<span class="call">print</span>(<span class="call">function</span>(times: <span class="number">3</span>)) <span class="comment">// 🧱🧱🧱</span>
+</code></pre><p>Notice that the function has the same Closure type except that it has a named parameter <code>(times: Int) -&gt; String</code>. To show this we can have another function that has a parameter of <code>(Int) -&gt; String</code>.</p><pre><code><span class="keyword">let</span> closure: (<span class="type">Int</span>) -&gt; <span class="type">String</span>
+
+closure = { times <span class="keyword">in</span>
+    <span class="type">String</span>(repeating: <span class="string">"🧱"</span>, count: times)
+}
+
+<span class="keyword">func</span> function(times: <span class="type">Int</span>) -&gt; <span class="type">String</span> {
+    <span class="type">String</span>(repeating: <span class="string">"🧱"</span>, count: times)
+}
+
+<span class="keyword">func</span> task(closure: (<span class="type">Int</span>) -&gt; <span class="type">String</span>) {
+    <span class="call">print</span>(<span class="call">closure</span>(<span class="number">5</span>))
+}
+
+<span class="call">task</span>(closure: closure) <span class="comment">// 🧱🧱🧱🧱🧱</span>
+<span class="call">task</span>(closure: function) <span class="comment">// 🧱🧱🧱🧱🧱</span>
+</code></pre></div><span>Tagged with: </span><ul class="tag-list"><li><a href="/tags/swift">swift</a></li><li><a href="/tags/swiftlet">swiftlet</a></li></ul></article></div><footer><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><p><a href="/feed.rss">RSS feed</a></p></footer></body></html>

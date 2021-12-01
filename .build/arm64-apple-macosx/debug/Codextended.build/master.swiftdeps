@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
+options: "8f91f5c080ee05dfa082fbbdc06113a444cc9a4781f02ab54a8aa8fd08142ceb"
+build_start_time: [1638325123, 661465167]
+build_end_time: [1638325141, 604756832]
+inputs:
+  "/Users/0xleif/Development/StaticSite/.build/checkouts/codextended/Sources/Codextended/Codextended.swift": [1638325121, 744677543]

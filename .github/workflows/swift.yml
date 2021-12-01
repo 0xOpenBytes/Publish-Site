@@ -29,7 +29,6 @@ jobs:
           swift build -c release
           cp -r .build ~/Publish_build || true
           echo "${HOME}/Publish/.build/release" >> ${GITHUB_PATH}
-          cd PublishSite
       - run: publish-cli generate
 
       - name: Deploy to GitHub Pages

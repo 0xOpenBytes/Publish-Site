@@ -1,0 +1,6 @@
+version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
+options: "8f91f5c080ee05dfa082fbbdc06113a444cc9a4781f02ab54a8aa8fd08142ceb"
+build_start_time: [1638325123, 657641887]
+build_end_time: [1638325141, 639299869]
+inputs:
+  "/Users/0xleif/Development/StaticSite/.build/checkouts/sweep/Sources/Sweep/Sweep.swift": [1638325122, 69204330]

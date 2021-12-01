@@ -1,0 +1,11 @@
+{
+  "": {
+    "swift-dependencies": "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Sweep.build/master.swiftdeps"
+  },
+  "/Users/0xleif/Development/StaticSite/.build/checkouts/sweep/Sources/Sweep/Sweep.swift": {
+    "dependencies": "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Sweep.build/Sweep.d",
+    "object": "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Sweep.build/Sweep.swift.o",
+    "swiftmodule": "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Sweep.build/Sweep~partial.swiftmodule",
+    "swift-dependencies": "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Sweep.build/Sweep.swiftdeps"
+  }
+}
