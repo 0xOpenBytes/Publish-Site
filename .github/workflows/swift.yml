@@ -2,32 +2,38 @@ name: Publish
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
-  build:
-    runs-on: macOS-latest
-
+  deploy:
+    runs-on: macos-latest
     steps:
-    - uses: actions/checkout@v2
-  
-    - name: Generate blog
-      run: swift run Blog
-    - name: Publish in github pages repo
-      uses: crazy-max/ghaction-github-pages@v1.4.0
-      with:
-        repo: 0xOpenBytes/0xopenbytes.github.io
-        target_branch: master
-        keep_history: true
-        allow_empty_commit: false
-        build_dir: Output
-        committer_name: 0xOpenBytes 
-        commit_message: Update blog content
-      env:
-        GITHUB_PAT: ${{ secrets.REPO_TOKEN }}
-        
-    - name: Add & Commit changes
-      uses: EndBug/add-and-commit@v4.0.1
-      with:
-        author_name: 0xOpenBytes
-        message: Commit new output
+      - uses: actions/checkout@v2
+
+      - uses: actions/cache@v2
+        with:
+          path: |
+            ~/Publish_build
+            .build
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: |
+            ${{ runner.os }}-spm-
+      - name: Setup JohnSundell/Publish
+        run: |
+          cd ${HOME}
+          export PUBLISH_VERSION="0.7.0"
+          git clone https://github.com/JohnSundell/Publish.git
+          cd ./Publish && git checkout ${PUBLISH_VERSION}
+          mv ~/Publish_build .build || true
+          swift build -c release
+          cp -r .build ~/Publish_build || true
+          echo "${HOME}/Publish/.build/release" >> ${GITHUB_PATH}
+      - run: publish-cli generate
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_branch: release
+          publish_dir: ./Output
