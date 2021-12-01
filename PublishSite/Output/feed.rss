@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>OpenBytes</title><description>Independent developers looking to help others learn and overcome the many obstacles software development has to offer.</description><link>https://your-website-url.com</link><language>en</language><lastBuildDate>Tue, 30 Nov 2021 17:53:27 -0700</lastBuildDate><pubDate>Tue, 30 Nov 2021 17:53:27 -0700</pubDate><ttl>250</ttl><atom:link href="https://your-website-url.com/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://your-website-url.com/posts/an-intro-into-screendata-in-2021</guid><title>An Intro into ScreenData in 2021</title><description>Introduction into ScreenData in 2021</description><link>https://your-website-url.com/posts/an-intro-into-screendata-in-2021</link><pubDate>Tue, 30 Nov 2021 17:26:00 -0700</pubDate><content:encoded><![CDATA[<h1>An Intro into ScreenData in 2021</h1><p><a href="https://github.com/ServerDriven/ScreenData">ScreenData</a> is a data model for displaying UI Screens. A <strong>Screen</strong> is what contains all the views for ScreenData. <strong>Screens</strong> have <strong>Views</strong> which contain all the information they need to be displayed to the screen. <strong>ContainerViews</strong> can have multiple <strong>Views</strong> and specify a axis, horizontal or vertical, which the <strong>Views</strong> are aligned on. <strong>Views</strong> can have destinations which link to another <strong>Screen</strong>.</p><p>Since ScreenData is a data model, any programming language can implement it! Currently there are two implementations of ScreenData, <a href="https://github.com/ServerDriven/ScreenData-kotlin">Kotlin</a> and <a href="https://github.com/ServerDriven/ScreenData-swift">Swift</a>. Official ScreenData repositories have been created for <a href="https://github.com/ServerDriven/ScreenData-typescript">Typescript</a>, <a href="https://github.com/ServerDriven/ScreenData-rust">Rust</a>, and <a href="https://github.com/ServerDriven/ScreenData-dart">Dart</a>. All are open for anyone to implement.</p><p>After you have chosen your preferred ScreenData implementation, you can start deciding how you will get some <strong>Screen</strong> and optionally store it. For instance here are some examples.</p><ul><li>Storing the ScreenData or JSON locally to be able to fetch it instantly</li><li>Fetching the data from a server</li><li>Fetch the data from a server, but then cache a local version of the data until some indeterminate time in the future</li></ul><p>All of these decisions are influenced by what ScreenDataUI implementation you choose. Currently there are two implementations of ScreenDataUI, <a href="https://github.com/ServerDriven/ScreenDataUI-ios">iOS (SwiftUI)</a> and <a href="https://github.com/ServerDriven/ScreenDataUI-android">Android (Compose)</a>. These implementations are intended to be a 1:1 implementation of ScreenData for mobile. Not all implementations use everything that ScreenData has to offer. If you find ScreenData doesn’t have what you need, you can always use a <strong>CustomView</strong>. When using a <strong>CustomView</strong>, the front end will need to have its own implementation of the view. <strong>CustomViews</strong> should use an id so that the front end can tell what to display.</p>]]></content:encoded></item><item><guid isPermaLink="true">https://your-website-url.com/posts/swiftlet-01-variables</guid><title>SwiftLet #01: Variables</title><description>SwiftLet #01</description><link>https://your-website-url.com/posts/swiftlet-01-variables</link><pubDate>Tue, 30 Nov 2021 17:26:00 -0700</pubDate><content:encoded><![CDATA[<h1>SwiftLet #01: Variables</h1><p>One can think of variables as a named value. The value of the variable could be anything: a number, some words, an image, etc. All variables need to be <strong>set</strong> before we can <strong>get</strong> the actual value.</p><p><code>{Keyword} {Variable Name}(: {Type}) = ({Value})</code></p><p>It is required to specify if the variable is constant or modifiable. If the variable is a constant, we will denote that with the keyword of <code>let</code> otherwise if the variable is modifiable, we will use <code>var</code>. After specifying if the variable is a constant or not, we need to give the variable a name! The name of the variable can be anything, in Swift it could even be an emoji! After the variable’s name, we have the option to specify the type of the value, but this is optional if you set the value on the same line. This is because of Swift’s type inference! Lastly we have the option of if we want to <strong>set</strong> the variable’s value now or later, but we <strong>must set</strong> the variable’s value before trying to <strong>get</strong> it.</p><p><strong>Example 1</strong></p><pre><code><span class="comment">// Format: {Keyword} {Variable Name} = {Value}</span>
+<span class="keyword">let</span> variable = <span class="string">"Hello, World!"</span>
+</code></pre><p><strong>Example 2</strong></p><pre><code><span class="comment">// Format: {Keyword} {Variable Name}: {Type} = {Value}</span>
+<span class="keyword">let</span> variable: <span class="type">String</span> = <span class="string">"Hello, World!"</span>
+</code></pre><p><strong>Example 3</strong></p><pre><code><span class="comment">// Format: {Keyword} {Variable Name}: {Type}</span>
+<span class="keyword">let</span> variable: <span class="type">String</span>
+
+variable = <span class="string">"🥇"</span>
+</code></pre><p><strong>Basic Types</strong></p><pre><code><span class="keyword">let</span> boolean: <span class="type">Bool</span> = <span class="type">Bool</span>.<span class="call">random</span>() <span class="comment">// true or false</span> 
+<span class="keyword">let</span> integer: <span class="type">Int</span> = <span class="type">Int</span>.<span class="property">max</span> <span class="comment">// 9223372036854775807</span>
+<span class="keyword">let</span> float: <span class="type">Float</span> = <span class="type">Float</span>.<span class="property">pi</span> <span class="comment">// 3.1415925</span>
+<span class="keyword">let</span> double: <span class="type">Double</span> = <span class="type">Double</span>.<span class="property">pi</span> <span class="comment">// 3.141592653589793</span>
+<span class="keyword">let</span> character: <span class="type">Character</span> <span class="string">"S"</span>
+<span class="keyword">let</span> string: <span class="type">String</span> = <span class="string">"Hello, World!"</span>
+</code></pre><p><strong>Collection Types</strong></p><pre><code><span class="keyword">let</span> array: [<span class="type">Int</span>] = [<span class="number">0</span>, <span class="number">1</span>, <span class="number">2</span>]
+<span class="keyword">let</span> dictionary: [<span class="type">String</span>: <span class="type">Int</span>] = [<span class="string">"single"</span>: <span class="number">1</span>]
+<span class="keyword">let</span> set: <span class="type">Set</span> = <span class="type">Set</span>([<span class="number">0</span>, <span class="number">1</span>, <span class="number">1</span>, <span class="number">2</span>])
+<span class="comment">// let set: Set = [0, 1, 1, 2] // You can also just say an Array is a Set!</span>
+</code></pre><p><strong>The Any Type</strong></p><pre><code><span class="keyword">let</span> boolean: <span class="type">Any</span> = <span class="type">Bool</span>.<span class="call">random</span>() <span class="comment">// true or false</span> 
+<span class="keyword">let</span> integer: <span class="type">Any</span> = <span class="type">Int</span>.<span class="property">max</span> <span class="comment">// 9223372036854775807</span>
+<span class="keyword">let</span> float: <span class="type">Any</span> = <span class="type">Float</span>.<span class="property">pi</span> <span class="comment">// 3.1415925</span>
+<span class="keyword">let</span> double: <span class="type">Any</span> = <span class="type">Double</span>.<span class="property">pi</span> <span class="comment">// 3.141592653589793</span>
+<span class="keyword">let</span> character: <span class="type">Any</span> <span class="string">"S"</span>
+<span class="keyword">let</span> string: <span class="type">Any</span> = <span class="string">"Hello, World!"</span> 
+</code></pre>]]></content:encoded></item><item><guid isPermaLink="true">https://your-website-url.com/posts/swiftlet-02-let</guid><title>SwiftLet #02: Let</title><description>SwiftLet #02</description><link>https://your-website-url.com/posts/swiftlet-02-let</link><pubDate>Tue, 30 Nov 2021 17:26:00 -0700</pubDate><content:encoded><![CDATA[<h1>SwiftLet #02: Let</h1><p><em>Let is the keyword to define a variable that can only be set once.</em></p><pre><code><span class="keyword">let</span> variable: <span class="type">String</span>
+
+variable = <span class="string">"👋"</span>
+
+<span class="comment">// variable = "🙅" // This will result in a compiler error!</span>
+</code></pre><p>If you uncomment the line where <code>variable</code> is being set to 🙅, you will get a compiler error.</p><p><code>Immutable value 'variable' may only be initialized once</code></p><p><strong>*NOTE</strong> It says initialized_</p><p><strong>Example 1</strong> Simply set the value. Go type inference!</p><pre><code><span class="keyword">let</span> pi = <span class="type">Float</span>.<span class="property">pi</span>
+</code></pre><p><strong>Example 2</strong> What if we tried to modify the value? In this example, we are trying to modify an Array after it has been initialized, in Swift Arrays are <strong>Value Types</strong> <em>(in a later chapter we will dive into the topic of <strong>Value Types</strong> and <strong>Reference Types</strong>)</em>.</p><pre><code><span class="keyword">let</span> variable: [<span class="type">String</span>]
+
+variable = [<span class="string">"👋"</span>]
+
+variable.<span class="call">append</span>(<span class="string">"🙅"</span>) <span class="comment">// This will also result in a compiler error!</span>
+</code></pre><p>The error you get is because <strong>Value Types</strong> are always reinitialized! Their value changed, so it is a <strong>new</strong> value.</p><p><code>Mutating method 'append' may not be used on immutable value 'variable'</code></p><p><strong>Example 3</strong> We can <strong>get</strong> the variable and use the value, in this example we print the current value to the console.</p><pre><code><span class="keyword">let</span> variable = <span class="string">"👋"</span>
+
+<span class="call">print</span>(variable) <span class="comment">// 👋</span>
+</code></pre><p><strong>Closing Remarks</strong></p><p>We learned that <code>let</code> can only <strong>set</strong> a variable’s value once! Also we learned that we can <strong>get</strong> the value of a variable and use it. Finally we learned that Swift has <strong>Value Types</strong> and <strong>Reference Types</strong>; also that you can not modify a variable which happens to be a <strong>Value Type</strong>.</p><p>----</p>]]></content:encoded></item><item><guid isPermaLink="true">https://your-website-url.com/posts/swiftlet-03-var</guid><title>SwiftLet #03: Var</title><description>SwiftLet #03</description><link>https://your-website-url.com/posts/swiftlet-03-var</link><pubDate>Tue, 30 Nov 2021 17:26:00 -0700</pubDate><content:encoded><![CDATA[<h1>SwiftLet #03: Var</h1><p><em>Var is the keyword to define a variable.</em></p><pre><code><span class="keyword">var</span> variable: <span class="type">String</span>
+
+variable = <span class="string">"👋"</span>
+
+<span class="call">print</span>(variable) <span class="comment">// 👋</span>
+
+variable = <span class="string">"😱"</span>
+
+<span class="call">print</span>(variable) <span class="comment">// 😱</span>
+</code></pre><p><strong>Example 1</strong></p><p>Some types allow for the use of different operators! So far we have only used the assignment operator (<strong>=</strong>). For this example we will try using the addition operator (<strong>+</strong>).</p><pre><code><span class="keyword">var</span> variable: <span class="type">String</span>
+
+variable = <span class="string">"👋"</span>
+
+<span class="call">print</span>(variable) <span class="comment">// 👋</span>
+
+variable = variable + <span class="string">"😱"</span>
+
+<span class="call">print</span>(variable) <span class="comment">// 👋😱</span>
+</code></pre><p><strong>Example 2</strong></p><pre><code><span class="keyword">var</span> variable: [<span class="type">String</span>]
+
+variable = [<span class="string">"👋"</span>]
+
+<span class="call">print</span>(variable) <span class="comment">// ["👋"]</span>
+
+variable.<span class="call">append</span>(<span class="string">"🤪"</span>)
+
+<span class="call">print</span>(variable) <span class="comment">// ["👋", "🤪"]</span>
+</code></pre>]]></content:encoded></item><item><guid isPermaLink="true">https://your-website-url.com/posts/swiftlet-04-optionals</guid><title>SwiftLet #04: Optionals</title><description>SwiftLet #04</description><link>https://your-website-url.com/posts/swiftlet-04-optionals</link><pubDate>Tue, 30 Nov 2021 17:26:00 -0700</pubDate><content:encoded><![CDATA[<h1>SwiftLet #04: Optionals</h1><p><em>What if a variable shouldn’t have a value?</em></p><p>Great question! Luckily Swift has what are known as Optionals. Optionals <strong>optionally</strong> have a value! Let’s say we have a variable that is the name of our favorite ice cream.</p><pre><code><span class="keyword">var</span> favoriteIceCreamFlavor: <span class="type">String</span>
+</code></pre><p>Well let’s say we have a friend that hates ice cream, they don’t even have a least favorite flavor! You may think, wait can’t we just put nothing as the string?</p><pre><code>favoriteIceCreamFlavor = <span class="string">""</span>
+</code></pre><p>Sure! Although this could cause issues, why isn’t the <code>favoriteIceCreamFlavor</code> just <strong>n/a</strong>? In Swift <code>nil</code> is the value denoted to mean nothing or does not exist.</p><p>This is when we want to use optionals! Now we can print out the <code>favoriteIceCreamFlavor</code> and it will print out <code>nil</code>.</p><pre><code><span class="keyword">var</span> favoriteIceCreamFlavor: <span class="type">String</span>?
+
+<span class="call">print</span>(favoriteIceCreamFlavor) <span class="comment">// nil</span>
+</code></pre><p>Although now, when we set the <code>favoriteIceCreamFlavor</code> to some flavor and print it out we get some different output than if we used just a <code>String</code> and not an <code>String?</code> (optional string).</p><pre><code><span class="keyword">var</span> favoriteIceCreamFlavor: <span class="type">String</span>?
+
+favoriteIceCreamFlavor = <span class="string">"Coffee"</span>
+
+<span class="call">print</span>(favoriteIceCreamFlavor) <span class="comment">// Optional("Coffee")</span>
+</code></pre><p>For some reason we are getting our favorite ice cream flavor, but it is being wrapped with <code>Optional</code>. In Swift Optionals help us deal with variables that may not always have a value. If we wanted to print out <code>favoriteIceCreamFlavor</code> as a <code>String</code> and not a <code>String?</code>, we just need to unwrap the value! Swift has a few different ways to unwrap an Optional, the first we will discuss is the one you should <strong>almost never use</strong>!</p><p><strong>Force Unwrap</strong> When you force unwrap an Optional in Swift it will return the unwrapped value or crash your program! <strong>Be careful!</strong></p><pre><code><span class="keyword">var</span> favoriteIceCreamFlavor: <span class="type">String</span>?
+
+favoriteIceCreamFlavor = <span class="string">"Coffee"</span>
+
+<span class="call">print</span>(favoriteIceCreamFlavor!) <span class="comment">// Coffee</span>
+</code></pre><p>If we didn’t have a <code>favoriteIceCreamFlavor</code> set our app would crash and give us an error.</p><pre><code><span class="keyword">var</span> favoriteIceCreamFlavor: <span class="type">String</span>?
+
+<span class="call">print</span>(favoriteIceCreamFlavor!)
+<span class="comment">// Fatal error: Unexpectedly found nil while unwrapping an Optional value
+// Terminated due to signal: ILLEGAL INSTRUCTION (4)</span>
+</code></pre><p><strong>Default Unwrap</strong> Instead of force unwrapping, there is always the option to provide a default value if the variable is <code>nil</code>!</p><pre><code><span class="keyword">var</span> favoriteIceCreamFlavor: <span class="type">String</span>?
+
+favoriteIceCreamFlavor = <span class="string">"Coffee"</span>
+
+<span class="call">print</span>(favoriteIceCreamFlavor ?? <span class="string">"N/A"</span>) <span class="comment">// Coffee</span>
+</code></pre><p>If the variable is <code>nil</code> it will just default to the value we provided.</p><pre><code><span class="keyword">var</span> favoriteIceCreamFlavor: <span class="type">String</span>?
+
+<span class="call">print</span>(favoriteIceCreamFlavor ?? <span class="string">"N/A"</span>) <span class="comment">// N/A</span>
+</code></pre><p><strong>Conditionally Unwrap</strong> Swift also can unwrap Optionals using an <code>if</code> or <code>guard</code> statement. Simply initialize a new variable inside the conditional statement.</p><p><strong>if let</strong></p><pre><code><span class="keyword">var</span> favoriteIceCreamFlavor: <span class="type">String</span>? = <span class="type">Bool</span>.<span class="call">random</span>() ? <span class="string">"Coffee"</span> : <span class="keyword">nil
+
+if let</span> unwrappedFavoriteIceCreamFlavor = favoriteIceCreamFlavor {
+    <span class="call">print</span>(unwrappedFavoriteIceCreamFlavor)
+} <span class="keyword">else</span> {
+    <span class="call">print</span>(unwrappedFavoriteIceCreamFlavor) <span class="comment">// Error: Cannot find 'unwrappedFavoriteIceCreamFlavor' in scope</span>   
+    <span class="call">print</span>(<span class="string">"None!"</span>)
+}
+</code></pre><p>This example will randomly set the value of <code>favoriteIceCreamFlavor</code> to “Coffee“ or <code>nil</code>. Then it will only print the ice cream flavor if it is not <code>nil</code>. Otherwise it will just print “None!”. Notice that <code>unwrappedFavoriteIceCreamFlavor</code> is a new variable and is only usage within the scope of the statement it belongs to.</p><pre><code><span class="keyword">var</span> favoriteIceCreamFlavor: <span class="type">String</span>? = <span class="type">Bool</span>.<span class="call">random</span>() ? <span class="string">"Coffee"</span> : <span class="keyword">nil
+
+if let</span> unwrappedFavoriteIceCreamFlavor = favoriteIceCreamFlavor,
+    unwrappedFavoriteIceCreamFlavor == <span class="string">"Coffee"</span> {
+    <span class="call">print</span>(unwrappedFavoriteIceCreamFlavor)
+} <span class="keyword">else if var</span> unwrappedFavoriteIceCreamFlavor = favoriteIceCreamFlavor {
+    unwrappedFavoriteIceCreamFlavor = <span class="string">"Coffee"</span>
+    <span class="call">print</span>(unwrappedFavoriteIceCreamFlavor)
+} <span class="keyword">else</span> {
+    <span class="call">print</span>(<span class="string">"None!"</span>)
+}
+</code></pre><p>You can even specify that the locally unwrapped variable is mutable! Which doesn’t change the original <code>favoriteIceCreamFlavor</code> if that variable is a Value Type. If the variable is a Reference Type, it can modify any variable that is a <code>var</code> and you have access to.</p><p><strong>guard let</strong></p><pre><code><span class="keyword">var</span> favoriteIceCreamFlavor: <span class="type">String</span>? = <span class="type">Bool</span>.<span class="call">random</span>() ? <span class="string">"Coffee"</span> : <span class="keyword">nil
+
+guard let</span> unwrappedFavoriteIceCreamFlavor = favoriteIceCreamFlavor <span class="keyword">else</span> {
+<span class="comment">//    print(unwrappedFavoriteIceCreamFlavor) // Error: Cannot find 'unwrappedFavoriteIceCreamFlavor' in scope</span>   
+    <span class="call">print</span>(<span class="string">"None!"</span>)
+    <span class="keyword">return</span>
+}
+
+<span class="call">print</span>(unwrappedFavoriteIceCreamFlavor)
+</code></pre>]]></content:encoded></item><item><guid isPermaLink="true">https://your-website-url.com/posts/swiftlet-05-closures</guid><title>SwiftLet #05: Closures</title><description>SwiftLet #04</description><link>https://your-website-url.com/posts/swiftlet-05-closures</link><pubDate>Tue, 30 Nov 2021 17:26:00 -0700</pubDate><content:encoded><![CDATA[<h1>SwiftLet #05: Closures</h1><p><em>Input and Output</em></p><p>A Closure is a block of code that can be executed by reference of a variable or name. Closures in Swift are normally unnamed and passed in as a parameter variable or stored as a variable. Functions are named blocks of code, they can also be passed in as a parameter for a Closure type.</p><p><strong>Closure Type</strong> The most basic Closure type you can have is one that doesn’t take any parameter variables (input) and doesn’t return (output) anything. This Closure type is common and is know as the Void to Void closure.</p><pre><code><span class="keyword">let</span> closure: () -&gt; <span class="type">Void</span>
+</code></pre><p>The type of this closure denotes that it doesn’t take any parameters, <code>()</code>, and returns <code>Void</code> which every Closure in Swift, which doesn’t return a specified type, happens to return <code>Void</code>.</p><p>Another example for a Closure type could be one that takes in some <code>Int</code> and returns some <code>String</code>.</p><pre><code><span class="keyword">let</span> closure: (<span class="type">Int</span>) -&gt; <span class="type">String</span>
+
+closure = { times <span class="keyword">in</span>
+    <span class="type">String</span>(repeating: <span class="string">"🧱"</span>, count: times)
+}
+
+<span class="keyword">func</span> function(times: <span class="type">Int</span>) -&gt; <span class="type">String</span> {
+    <span class="type">String</span>(repeating: <span class="string">"🧱"</span>, count: times)
+}
+
+<span class="call">print</span>(<span class="call">closure</span>(<span class="number">3</span>)) <span class="comment">// 🧱🧱🧱</span>
+<span class="call">print</span>(<span class="call">function</span>(times: <span class="number">3</span>)) <span class="comment">// 🧱🧱🧱</span>
+</code></pre><p>Notice that the function has the same Closure type except that it has a named parameter <code>(times: Int) -&gt; String</code>. To show this we can have another function that has a parameter of <code>(Int) -&gt; String</code>.</p><pre><code><span class="keyword">let</span> closure: (<span class="type">Int</span>) -&gt; <span class="type">String</span>
+
+closure = { times <span class="keyword">in</span>
+    <span class="type">String</span>(repeating: <span class="string">"🧱"</span>, count: times)
+}
+
+<span class="keyword">func</span> function(times: <span class="type">Int</span>) -&gt; <span class="type">String</span> {
+    <span class="type">String</span>(repeating: <span class="string">"🧱"</span>, count: times)
+}
+
+<span class="keyword">func</span> task(closure: (<span class="type">Int</span>) -&gt; <span class="type">String</span>) {
+    <span class="call">print</span>(<span class="call">closure</span>(<span class="number">5</span>))
+}
+
+<span class="call">task</span>(closure: closure) <span class="comment">// 🧱🧱🧱🧱🧱</span>
+<span class="call">task</span>(closure: function) <span class="comment">// 🧱🧱🧱🧱🧱</span>
+</code></pre>]]></content:encoded></item></channel></rss>
