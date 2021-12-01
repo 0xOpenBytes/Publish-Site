@@ -18,7 +18,7 @@ struct PublishSite: Website {
     }
     
     // Update these properties to configure your website:
-    var url = URL(string: "https://your-website-url.com")!
+    var url = URL(string: "https://0xopenbytes.github.io/")!
     var name = "OpenBytes"
     var description = "Independent developers looking to help others learn and overcome the many obstacles software development has to offer."
     var language: Language { .english }
@@ -35,7 +35,7 @@ try PublishSite()
             .generateHTML(withTheme: .foundation),
             .generateRSSFeed(including: [.posts]),
             .generateSiteMap(),
-            .deploy(using: .gitHub("0xOpenBytes/Site"))
+            .deploy(using: .gitHub("0xOpenBytes/0xopenbytes.github.io"))
         ]
     )
 
