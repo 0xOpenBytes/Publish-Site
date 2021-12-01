@@ -3,37 +3,29 @@ name: Publish
 on:
   push:
     branches:
-      - main
+    - main
 
 jobs:
-  deploy:
-    runs-on: macos-latest
+  gh-pages:
+    runs-on: ubuntu-latest
+    container:
+      image: "swift:5.4"
     steps:
-      - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v1
+        
+    - name: Build Publish
+      run: |
+        git clone https://github.com/JohnSundell/Publish.git
+        cd Publish
+        make
 
-      - uses: actions/cache@v2
-        with:
-          path: |
-            ~/Publish_build
-            .build
-          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
-          restore-keys: |
-            ${{ runner.os }}-spm-
-      - name: Setup JohnSundell/Publish
-        run: |
-          cd ${HOME}
-          export PUBLISH_VERSION="0.7.0"
-          git clone https://github.com/JohnSundell/Publish.git
-          cd ./Publish && git checkout ${PUBLISH_VERSION}
-          mv ~/Publish_build .build || true
-          swift build -c release
-          cp -r .build ~/Publish_build || true
-          echo "${HOME}/Publish/.build/release" >> ${GITHUB_PATH}
-      - run: publish-cli generate
+    - name: Generate Site
+      run: publish generate
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.ACCESS_TOKEN }}
-          publish_branch: release
-          publish_dir: ./Output
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v2
+      env:
+        ACTIONS_DEPLOY_KEY: ${{ secrets.ACCESS_TOKEN }}
+        PUBLISH_BRANCH: master
+        PUBLISH_DIR: ./Output
