@@ -1,4 +1,0 @@
-module ShellOut {
-    header "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/ShellOut.build/ShellOut-Swift.h"
-    requires objc
-}

@@ -1,4 +1,0 @@
-module Codextended {
-    header "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Codextended.build/Codextended-Swift.h"
-    requires objc
-}

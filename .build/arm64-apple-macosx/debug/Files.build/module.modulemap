@@ -1,4 +1,0 @@
-module Files {
-    header "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Files.build/Files-Swift.h"
-    requires objc
-}

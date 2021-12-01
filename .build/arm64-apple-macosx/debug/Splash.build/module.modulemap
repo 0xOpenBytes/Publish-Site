@@ -1,4 +1,0 @@
-module Splash {
-    header "/Users/0xleif/Development/StaticSite/.build/arm64-apple-macosx/debug/Splash.build/Splash-Swift.h"
-    requires objc
-}

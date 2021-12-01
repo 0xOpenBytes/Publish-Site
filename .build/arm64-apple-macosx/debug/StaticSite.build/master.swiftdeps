@@ -1,6 +1,0 @@
-version: "Apple Swift version 5.5.1 (swiftlang-1300.0.31.4 clang-1300.0.29.6)"
-options: "cc8d7cc55be3f0b45407c1d49f03ee17a224954b9bd1166cd075381672d6eedd"
-build_start_time: [1638325144, 104412078]
-build_end_time: [1638325144, 431879043]
-inputs:
-  "/Users/0xleif/Development/StaticSite/Sources/StaticSite/main.swift": [1638324904, 109601974]
