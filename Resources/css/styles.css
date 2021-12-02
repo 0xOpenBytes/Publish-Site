@@ -1,3 +1,15 @@
+/* OpenBytes CSS */
+
+/* Colored Tags IDs */
+#tag-swift { background-color: #f05138; }
+#tag-kotlin { background-color: #7c53ec; }
+#tag-sd { background-color: #e94f92; }
+#tag-ios { background-color: #3679f6; }
+#tag-android { background-color: #78c257; }
+/* End of IDs */
+
+/* End of CSS */
+
 /**
 *  Publish Foundation theme
 *  Copyright (c) John Sundell 2019

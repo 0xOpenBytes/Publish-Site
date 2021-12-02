@@ -9,8 +9,10 @@ import Plot
 import Publish
 
 struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
-    func makeIndexHTML(for index: Index,
-                       context: PublishingContext<Site>) throws -> HTML {
+    func makeIndexHTML(
+        for index: Index,
+        context: PublishingContext<Site>
+    ) throws -> HTML {
         HTML(
             .lang(context.site.language),
             .head(for: index, on: context.site),
@@ -33,9 +35,11 @@ struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
             }
         )
     }
-
-    func makeSectionHTML(for section: Section<Site>,
-                         context: PublishingContext<Site>) throws -> HTML {
+    
+    func makeSectionHTML(
+        for section: Section<Site>,
+        context: PublishingContext<Site>
+    ) throws -> HTML {
         HTML(
             .lang(context.site.language),
             .head(for: section, on: context.site),
@@ -49,9 +53,11 @@ struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
             }
         )
     }
-
-    func makeItemHTML(for item: Item<Site>,
-                      context: PublishingContext<Site>) throws -> HTML {
+    
+    func makeItemHTML(
+        for item: Item<Site>,
+        context: PublishingContext<Site>
+    ) throws -> HTML {
         HTML(
             .lang(context.site.language),
             .head(for: item, on: context.site),
@@ -71,9 +77,11 @@ struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
             )
         )
     }
-
-    func makePageHTML(for page: Page,
-                      context: PublishingContext<Site>) throws -> HTML {
+    
+    func makePageHTML(
+        for page: Page,
+        context: PublishingContext<Site>
+    ) throws -> HTML {
         HTML(
             .lang(context.site.language),
             .head(for: page, on: context.site),
@@ -84,9 +92,11 @@ struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
             }
         )
     }
-
-    func makeTagListHTML(for page: TagListPage,
-                         context: PublishingContext<Site>) throws -> HTML? {
+    
+    func makeTagListHTML(
+        for page: TagListPage,
+        context: PublishingContext<Site>
+    ) throws -> HTML? {
         HTML(
             .lang(context.site.language),
             .head(for: page, on: context.site),
@@ -94,13 +104,14 @@ struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
                 SiteHeader(context: context, selectedSelectionID: nil)
                 Wrapper {
                     H1("Browse all tags")
-                    List(page.tags.sorted()) { tag in
+                    List(page.tags.ordered()) { tag in
                         ListItem {
                             Link(tag.string,
                                  url: context.site.path(for: tag).absoluteString
                             )
                         }
                         .class("tag")
+                        .id(tag.cssID ?? "")
                     }
                     .class("all-tags")
                 }
@@ -108,9 +119,11 @@ struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
             }
         )
     }
-
-    func makeTagDetailsHTML(for page: TagDetailsPage,
-                            context: PublishingContext<Site>) throws -> HTML? {
+    
+    func makeTagDetailsHTML(
+        for page: TagDetailsPage,
+        context: PublishingContext<Site>
+    ) throws -> HTML? {
         HTML(
             .lang(context.site.language),
             .head(for: page, on: context.site),
@@ -119,14 +132,16 @@ struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
                 Wrapper {
                     H1 {
                         Text("Tagged with ")
-                        Span(page.tag.string).class("tag")
+                        Span(page.tag.string)
+                            .class("tag")
+                            .id(page.tag.cssID ?? "")
                     }
-
+                    
                     Link("Browse all tags",
-                        url: context.site.tagListPath.absoluteString
+                         url: context.site.tagListPath.absoluteString
                     )
-                    .class("browse-all")
-
+                        .class("browse-all")
+                    
                     ItemList(
                         items: context.items(
                             taggedWith: page.tag,
@@ -139,86 +154,5 @@ struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
                 SiteFooter()
             }
         )
-    }
-}
-
-private struct Wrapper: ComponentContainer {
-    @ComponentBuilder var content: ContentProvider
-
-    var body: Component {
-        Div(content: content).class("wrapper")
-    }
-}
-
-private struct SiteHeader<Site: Website>: Component {
-    var context: PublishingContext<Site>
-    var selectedSelectionID: Site.SectionID?
-
-    var body: Component {
-        Header {
-            Wrapper {
-                Link(context.site.name, url: "/")
-                    .class("site-name")
-
-                if Site.SectionID.allCases.count > 1 {
-                    navigation
-                }
-            }
-        }
-    }
-
-    private var navigation: Component {
-        Navigation {
-            List(Site.SectionID.allCases) { sectionID in
-                let section = context.sections[sectionID]
-
-                return Link(section.title,
-                    url: section.path.absoluteString
-                )
-                .class(sectionID == selectedSelectionID ? "selected" : "")
-            }
-        }
-    }
-}
-
-private struct ItemList<Site: Website>: Component {
-    var items: [Item<Site>]
-    var site: Site
-
-    var body: Component {
-        List(items) { item in
-            Article {
-                H1(Link(item.title, url: item.path.absoluteString))
-                ItemTagList(item: item, site: site)
-                Paragraph(item.description)
-            }
-        }
-        .class("item-list")
-    }
-}
-
-private struct ItemTagList<Site: Website>: Component {
-    var item: Item<Site>
-    var site: Site
-
-    var body: Component {
-        List(item.tags) { tag in
-            Link(tag.string, url: site.path(for: tag).absoluteString)
-        }
-        .class("tag-list")
-    }
-}
-
-private struct SiteFooter: Component {
-    var body: Component {
-        Footer {
-            Paragraph {
-                Text("Generated using ")
-                Link("Publish", url: "https://github.com/johnsundell/publish")
-            }
-            Paragraph {
-                Link("RSS feed", url: "/feed.rss")
-            }
-        }
     }
 }
