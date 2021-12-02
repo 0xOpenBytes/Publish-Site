@@ -2,6 +2,7 @@ import Foundation
 import Publish
 import Plot
 import HighlightJSPublishPlugin
+import CNAMEPublishPlugin
 
 // This type acts as the configuration for your website.
 struct OpenBytesSite: Website {
@@ -18,7 +19,7 @@ struct OpenBytesSite: Website {
     }
     
     // Update these properties to configure your website:
-    var url = URL(string: "https://0xopenbytes.github.io/")!
+    var url = URL(string: "https://openbytes.dev")!
     var name = "0xOpenBytes"
     var description = "Independent developers looking to help others learn and overcome the many obstacles software development has to offer."
     var language: Language { .english }
@@ -30,6 +31,7 @@ try OpenBytesSite()
     .publish(
         using: [
             .installPlugin(.highlightJS()),
+            .installPlugin(.generateCNAME(with: "openbytes.dev", "www.openbytes.dev")),
             .addMarkdownFiles(),
             .copyResources(),
             .generateHTML(withTheme: .openBytes),
