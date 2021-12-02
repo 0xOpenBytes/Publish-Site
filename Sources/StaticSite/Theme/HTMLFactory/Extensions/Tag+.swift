@@ -3,7 +3,7 @@ import Publish
 extension Tag {
     enum ColoredTag: String {
         case screendata, severdriven
-        case swift, swiftlet
+        case swift, swiftlet, spm
         case ios, swiftui
         case kotlin
         case android
@@ -12,7 +12,7 @@ extension Tag {
             switch self {
             case .screendata, .severdriven:
                 return "tag-sd"
-            case .swift, .swiftlet:
+            case .swift, .swiftlet, .spm:
                 return "tag-swift"
             case .ios, .swiftui:
                 return "tag-ios"
