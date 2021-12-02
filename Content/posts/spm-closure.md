@@ -9,12 +9,19 @@ tags: swift, spm, Work In Progress 🚧
 
 <br/>
 
+```shell
+git clone git@github.com:0xLeif/Closure.git
+```
+
+<br/>
+
 ## Defining a Closure
 
 _"A Closure is a block of code that can be executed by reference of a variable or name. Closures in Swift are normally unnamed and passed in as a parameter variable or stored as a variable."_
 
 🔗 [source](/posts/swiftlet-05-closures/)
 
+<br/>
 <br/>
 
 ### Closure.swift
@@ -43,12 +50,13 @@ public struct Closure<Input, Output> {
 Notice that we must specify that the closure is `@escaping`. This is becuase we will store it in a variable that we can keep for the lifetime of the object. In other words `@escaping` means that the closure can leave the scope of the function it is passed into. 
 
 <br/>
+<br/>
 
 ### Running the Closure
 
 <br/>
 
-Now that we have defined the basic `Closure` object we can start running the closure! Currently we would need to reach into the object. You will also not that we need to pass in `()` which is the Void type. 
+Now that we have defined the basic `Closure` object we can start running the closure! Currently we would need to reach into the object. You will also notice that we need to pass in `()` which is the Void type. 
 
 <br/>
 
@@ -62,6 +70,7 @@ sayHello.method(())
 
 _In this example, `sayHello` is of type `Closure<Void, Void>`._
 
+<br/>
 <br/>
 
 ### Extending Closure
@@ -88,6 +97,7 @@ public extension Closure {
 ```
 
 <br/>
+<br/>
 
 #### Void Input Closures
 
@@ -110,6 +120,7 @@ extension Closure where Input == Void {
 }
 ```
 
+<br/>
 <br/>
 
 #### Chaining Closures
@@ -161,6 +172,7 @@ let sayHello: Closure<Void, Void> = Closure {
 
 _In this example, `sayHello` is still of type `Closure<Void, Void>`._
 
+<br/>
 <br/>
 
 ## Stateful Closure
@@ -236,9 +248,11 @@ let statefulCount: Closure<Void, Int> = Closure {
 ```
 
 <br/>
+<br/>
 
 ***
 
+<br/>
 <br/>
 
 **Extra Examples**
