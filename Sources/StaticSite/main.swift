@@ -30,7 +30,7 @@ struct OpenBytesSite: Website {
 try OpenBytesSite()
     .publish(
         using: [
-            .installPlugin(.highlightJS()),
+            .installPlugin(.openBytesHighlightJS()),
             .installPlugin(.generateCNAME(with: "openbytes.dev", "www.openbytes.dev")),
             .addMarkdownFiles(),
             .copyResources(),

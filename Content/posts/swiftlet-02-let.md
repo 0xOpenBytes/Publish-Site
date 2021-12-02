@@ -19,7 +19,7 @@ If you uncomment the line where `variable` is being set to 🙅, you will get a 
 
 `Immutable value 'variable' may only be initialized once`
 
-_**NOTE** It says initialized_
+**NOTE:** _It says initialized_
 
 **Example 1**
 Simply set the value. Go type inference!
@@ -52,5 +52,3 @@ print(variable) // 👋
 **Closing Remarks**
 
 We learned that `let` can only **set** a variable’s value once! Also we learned that we can **get** the value of a variable and use it. Finally we learned that Swift has **Value Types** and **Reference Types**; also that you can not modify a variable which happens to be a **Value Type**.
-
----- 

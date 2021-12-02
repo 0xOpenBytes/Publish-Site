@@ -6,15 +6,20 @@
 #tag-sd { background-color: #e94f92; }
 #tag-ios { background-color: #3679f6; }
 #tag-android { background-color: #78c257; }
-/* End of IDs */
+/* End of Colored Tags IDs */
 
-/* End of CSS */
+/* Code Block Border Colors */
+#pre-swift { border-color: #f05138; }
+#pre-kotlin { border-color: #7c53ec; }
+/* End of Code Block Border Colors */
+
+/* End of OpenBytes CSS */
 
 /**
-*  Publish Foundation theme
-*  Copyright (c) John Sundell 2019
-*  MIT license, see LICENSE file for details
-*/
+ *  Publish Foundation theme
+ *  Copyright (c) John Sundell 2019
+ *  MIT license, see LICENSE file for details
+ */
 
 * {
     margin: 0;
@@ -159,16 +164,16 @@ footer {
     body {
         background-color: #222;
     }
-
+    
     body,
     header .site-name {
         color: #ddd;
     }
-
+    
     .item-list > li {
         background-color: #333;
     }
-
+    
     header {
         background-color: #000;
     }
@@ -192,6 +197,8 @@ pre {
     background-color: #1a1a1a;
     padding: 16px 0;
     border-radius: 16px;
+    border-width: 1px;
+    border-style: solid;
 }
 
 pre code {
@@ -247,10 +254,10 @@ pre code .preprocessing {
  */
 
 /*
-
+ 
  Atom One Light by Daniel Gamage
  Original One Light Syntax theme from https://github.com/atom/one-light-syntax
-
+ 
  base:    #fafafa
  mono-1:  #383a42
  mono-2:  #686b77
@@ -263,7 +270,7 @@ pre code .preprocessing {
  hue-5-2: #c91243
  hue-6:   #986801
  hue-6-2: #c18401
-
+ 
  */
 
 .hljs {
@@ -345,10 +352,10 @@ pre code .preprocessing {
 
 @media (prefers-color-scheme: dark) {
     /*
-    
+     
      Atom One Dark by Daniel Gamage
      Original One Dark Syntax theme from https://github.com/atom/one-dark-syntax
-    
+     
      base:    #282c34
      mono-1:  #abb2bf
      mono-2:  #818896
@@ -361,7 +368,7 @@ pre code .preprocessing {
      hue-5-2: #be5046
      hue-6:   #d19a66
      hue-6-2: #e6c07b
-    
+     
      */
     
     .hljs {
