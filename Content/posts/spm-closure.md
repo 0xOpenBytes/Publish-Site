@@ -1,7 +1,7 @@
 ---
 date: 2021-12-1 20:22
 description: Define and chain Closures with Inputs and Outputs
-tags: swift, spm, Work In Progress 🚧
+tags: swift, spm
 ---
 # Closure SPM 📦
 
