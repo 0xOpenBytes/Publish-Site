@@ -30,3 +30,5 @@ jobs:
           publish_dir: ./Output
           external_repository: 0xOpenBytes/0xopenbytes.github.io
           publish_branch: master
+          user_name: OpenBytes-Bot
+          user_email: 0xOpenBytes@gmail.com
