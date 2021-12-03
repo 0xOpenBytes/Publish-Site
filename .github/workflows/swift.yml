@@ -19,16 +19,12 @@ jobs:
         make
 
     - name: Generate Site
-      run: |
-        swift build
-        publish generate
+      run: publish generate
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v3.7.3
       with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./Output
-          external_repository: 0xOpenBytes/0xopenbytes.github.io
-          publish_branch: master
           user_name: OpenBytes-Bot
           user_email: 0xOpenBytes@gmail.com
