@@ -1,11 +1,11 @@
 import XCTest
-@testable import StaticSite
+@testable import Site
 
-final class StaticSiteTests: XCTestCase {
+final class SiteTests: XCTestCase {
     func testExample() throws {
         // This is an example of a functional test case.
         // Use XCTAssert and related functions to verify your tests produce the correct
         // results.
-        XCTAssertEqual(StaticSite().text, "Hello, World!")
+        XCTAssertEqual(Site().text, "Hello, World!")
     }
 }

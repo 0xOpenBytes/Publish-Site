@@ -3,11 +3,11 @@
 import PackageDescription
 
 let package = Package(
-    name: "StaticSite",
+    name: "Site",
     products: [
         .executable(
-            name: "StaticSite",
-            targets: ["StaticSite"]
+            name: "Site",
+            targets: ["Site"]
         )
     ],
     dependencies: [
@@ -17,7 +17,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "StaticSite",
+            name: "Site",
             dependencies: [
                 "Publish",
                 "CNAMEPublishPlugin",
