@@ -21,7 +21,9 @@ jobs:
         make
 
     - name: Generate Site
-      run: publish generate
+      run: |
+        swift build
+        publish generate
 
     - name: Deploy
       uses: peaceiris/actions-gh-pages@v2
