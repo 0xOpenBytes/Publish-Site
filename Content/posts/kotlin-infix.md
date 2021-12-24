@@ -73,7 +73,7 @@ Only a single parameter can be passed into them.
 Infix functions are already used within the standard Kotlin library as well. `until` returns a range from the provided lower and upper bound.
 
 ```kotlin
-	@Test
+    @Test
     fun `range demonstration`() {
         (0 until 10).forEach {
             print(it)
@@ -85,7 +85,7 @@ Infix functions are already used within the standard Kotlin library as well. `un
 Another common usage is the `to` infix function when adding elements to a map.
 
 ```kotlin
-	@Test
+    @Test
     fun `map to demonstration`() {
         val dummyMap = mapOf(
             "One" to 1,
@@ -97,3 +97,4 @@ Another common usage is the `to` infix function when adding elements to a map.
     }
 	// prints One 1 Two 2
 ```
+
