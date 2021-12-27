@@ -1,4 +1,58 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>0xOpenBytes</title><description>Independent developers looking to help others learn and overcome the many obstacles software development has to offer.</description><link>https://openbytes.dev</link><language>en</language><lastBuildDate>Fri, 3 Dec 2021 05:20:05 +0000</lastBuildDate><pubDate>Fri, 3 Dec 2021 05:20:05 +0000</pubDate><ttl>250</ttl><atom:link href="https://openbytes.dev/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://openbytes.dev/posts/spm-closure</guid><title>Closure SPM 📦</title><description>Define and chain Closures with Inputs and Outputs</description><link>https://openbytes.dev/posts/spm-closure</link><pubDate>Wed, 1 Dec 2021 20:22:00 +0000</pubDate><content:encoded><![CDATA[<h1>Closure SPM 📦</h1><p>🔗 <a href="https://github.com/0xLeif/Closure"><em>Check out Closure</em></a></p><br/><pre id=pre-shell data-language="shell" "><code>git clone git@github.com:0xLeif/Closure.git
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>0xOpenBytes</title><description>Independent developers looking to help others learn and overcome the many obstacles software development has to offer.</description><link>https://openbytes.dev</link><language>en</language><lastBuildDate>Mon, 27 Dec 2021 15:19:19 +0000</lastBuildDate><pubDate>Mon, 27 Dec 2021 15:19:19 +0000</pubDate><ttl>250</ttl><atom:link href="https://openbytes.dev/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://openbytes.dev/posts/kotlin-infix</guid><title>Kotlin infix notation</title><description>Kotlin infix</description><link>https://openbytes.dev/posts/kotlin-infix</link><pubDate>Fri, 24 Dec 2021 20:24:00 +0000</pubDate><content:encoded><![CDATA[<h1>Kotlin infix notation</h1><h3>What does it do</h3><p>The <code>infix</code> keyword can be applied to kotlin functions. This simply allows it to be called without requiring parenthesis for its parameter.</p><p>Here's a small example with a <code>Player</code> that can hold a <code>card</code> at any given time. The player can <code>swapCard</code> if the other card's value is greater than the one they hold. We apply the <code>infix</code> notation to the <code>swapCard</code> function.</p><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Player</span></span>(card: Card) {
+
+    <span class="hljs-keyword">var</span> card: Card = card
+        <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>
+
+    <span class="hljs-keyword">infix</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">swapCard</span><span class="hljs-params">(other: <span class="hljs-type">Card</span>)</span></span> {
+        <span class="hljs-keyword">if</span> (other.value &gt; card.value) {
+            card = other
+        }
+    }
+    
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">toString</span><span class="hljs-params">()</span></span>: String {
+        <span class="hljs-keyword">return</span> <span class="hljs-string">"Player Card :: <span class="hljs-subst">${card.value}</span>"</span>
+    }
+}
+
+<span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Card</span></span>(<span class="hljs-keyword">val</span> value: <span class="hljs-built_in">Int</span>)
+</code></pre><p>Lets try swapping a players card</p><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> `test swap`<span class="hljs-params">()</span></span> {
+        <span class="hljs-keyword">val</span> purplePlayer = Player(Card(<span class="hljs-number">4</span>))
+
+        purplePlayer swapCard Card(<span class="hljs-number">6</span>)
+
+        println(purplePlayer) <span class="hljs-comment">// successful swap </span>
+        <span class="hljs-comment">// prints Player Card :: 6</span>
+
+        purplePlayer swapCard Card(<span class="hljs-number">5</span>) <span class="hljs-comment">//unsuccessful swap</span>
+        <span class="hljs-comment">// prints Player Card :: 6</span>
+
+        println(purplePlayer)
+    }
+</code></pre><p>We're able to call the <code>swapCard</code> function without using the parenthesis.</p><h3>Constriants</h3><p>Only a single parameter can be passed into them.</p><pre id=pre-kotlin data-language="kotlin" "><code>	<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Player</span> </span>(...) {
+	...
+	<span class="hljs-keyword">infix</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">swapTwo</span><span class="hljs-params">(other: <span class="hljs-type">Card</span>, cardB: <span class="hljs-type">Card</span>)</span></span> { ... } <span class="hljs-comment">// will NOT compile</span>
+	...	
+}
+</code></pre><h3>Usage in standard library</h3><p>Infix functions are already used within the standard Kotlin library as well. <code>until</code> returns a range from the provided lower and upper bound.</p><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> `range demonstration`<span class="hljs-params">()</span></span> {
+        (<span class="hljs-number">0</span> until <span class="hljs-number">10</span>).forEach {
+            print(it)
+        }
+    }
+	<span class="hljs-comment">// prints 0123456789</span>
+</code></pre><p>Another common usage is the <code>to</code> infix function when adding elements to a map.</p><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-meta">@Test</span>
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> `map to demonstration`<span class="hljs-params">()</span></span> {
+        <span class="hljs-keyword">val</span> dummyMap = mapOf(
+            <span class="hljs-string">"One"</span> to <span class="hljs-number">1</span>,
+            <span class="hljs-string">"Two"</span> to <span class="hljs-number">2</span>
+        )
+		dummyMap.forEach { (k, v) -&gt;
+            print(<span class="hljs-string">"<span class="hljs-variable">$k</span> <span class="hljs-variable">$v</span> "</span>)
+        }
+    }
+	<span class="hljs-comment">// prints One 1 Two 2</span>
+</code></pre>]]></content:encoded></item><item><guid isPermaLink="true">https://openbytes.dev/posts/spm-closure</guid><title>Closure SPM 📦</title><description>Define and chain Closures with Inputs and Outputs</description><link>https://openbytes.dev/posts/spm-closure</link><pubDate>Wed, 1 Dec 2021 20:22:00 +0000</pubDate><content:encoded><![CDATA[<h1>Closure SPM 📦</h1><p>🔗 <a href="https://github.com/0xLeif/Closure"><em>Check out Closure</em></a></p><br/><pre id=pre-shell data-language="shell" "><code>git clone git@github.com:0xLeif/Closure.git
 </code></pre><br/><h2>Defining a Closure</h2><p><em>"A Closure is a block of code that can be executed by reference of a variable or name. Closures in Swift are normally unnamed and passed in as a parameter variable or stored as a variable."</em></p><p>🔗 <a href="https://openbytes.dev/posts/swiftlet-05-closures/">source</a></p><br/><br/><h3>Closure.swift</h3><br/><p>When we define a Closure we can assume that it will always have an <code>Input</code> and an <code>Output</code>. Either value could be <code>Void</code> in the case that a value doesn't exist. Knowing this we can expect that our object look something like, <code>Closure&lt;Input, Output&gt;</code>. We will need an actual closure when we initialize our <code>Closure</code> object. This value should look something like this, <code>(Input) -&gt; Output</code>.</p><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-comment">/// A Struct that defines a Closure with a given Input and a given Output</span>
 <span class="hljs-keyword">public</span> <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">Closure</span>&lt;<span class="hljs-title">Input</span>, <span class="hljs-title">Output</span>&gt; </span>{
   <span class="hljs-comment">/// The Closure passed in during initialization</span>
