@@ -1,5 +1,5 @@
 ---
-date: 2021-12-24
+date: 2021-12-24 12:00
 description: Kotlin infix
 tags: kotlin
 ---
