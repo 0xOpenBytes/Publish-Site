@@ -1,5 +1,5 @@
 ---
-date: 2021-12-209 12:00
+date: 2021-12-20 12:00
 description: An introduction to Kotlin's `reduce` and `fold` functions, along with some use cases.
 tags: kotlin
 ---
