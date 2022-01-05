@@ -17,15 +17,15 @@ A simple example where we add numbers from 0 till 4. Typically we would write so
 <br/>
 
 ```kotlin
-    @Test
-    fun `without`() {
-        val testList = (0 until 5).toList()
-        var acc = 0
-        testList.forEach {
-            acc += it
-        }
-        println("acc :: $acc") // acc :: 10
+@Test
+fun `without`() {
+    val testList = (0 until 5).toList()
+    var acc = 0
+    testList.forEach {
+        acc += it
     }
+    println("acc :: $acc") // acc :: 10
+}
 ```
 
 <br/>
@@ -37,18 +37,18 @@ We maintain a variable `acc` that holds the accumulated value.
 <br/>
 
 ```kotlin
-    @Test
-    fun `simple demonstration`() {
-        val testList = (0 until 5).toList()
-        val fold = testList.fold(0) { acc, i ->
-            acc + i
-        }
-        println("Fold :: $fold") // Fold :: 10
-        val reduce = testList.reduce { acc, i ->
-            acc + i
-        }
-        println("Reduce :: $reduce") // Reduce :: 10
+@Test
+fun `simple demonstration`() {
+    val testList = (0 until 5).toList()
+    val fold = testList.fold(0) { acc, i ->
+        acc + i
     }
+    println("Fold :: $fold") // Fold :: 10
+    val reduce = testList.reduce { acc, i ->
+        acc + i
+    }
+    println("Reduce :: $reduce") // Reduce :: 10
+}
 ```
 
 <br/>
@@ -68,27 +68,24 @@ But why separate these two, and where would you use one over the other ?
 
 Let's say we wish to iterate over our `testList` containing the numbers 0 till 4, and simply return a string joining all these numbers. Using `fold` we could do something like
 
-<br/>
-
 ```kotlin
-    @Test
-    fun `types difference`() {
-        val testList = (0 until 5).toList()
+@Test
+fun `types difference`() {
+    val testList = (0 until 5).toList()
 
-        val fold = testList.fold("") { acc, i ->
-            acc.plus(i)
-        }
-
-        println(fold)
+    val fold = testList.fold("") { acc, i ->
+        acc.plus(i)
     }
-```
 
-<br/>
+    println(fold)
+}
+```
 
 where we provide an empty initial string as the first "accumulated" value, and our lamda appends the next number to the string.
 
-Changing the return type would not be possible in `reduce`
+*Changing the return type would not be possible in `reduce`*
 
+<br/>
 
 ## Use case
 
@@ -101,49 +98,45 @@ A user can add multiple items to their basket when shopping, and we wish to disp
 
 An item is defined as ::
 
-<br/>
-
 ```kotlin
-    data class Item(
-        val id: Int,
-        val name: String,
-        val price: Int
-    )
+data class Item(
+    val id: Int,
+    val name: String,
+    val price: Int
+)
 ```
 
 <br/>
 
 And to generate the price of items for a given list ::
 
-<br/>
-
 ```kotlin
-    @Test
-    fun `reduce use case`() {
-        val items = listOf(
-            Item(
-                id = 0,
-                name = "Orange",
-                price = 4
-            ),
-            Item(
-                id = 1,
-                name = "Milk",
-                price = 5
-            ),
-            Item(
-                id = 2,
-                name = "Expensive Potato",
-                price = 15
-            )
+@Test
+fun `reduce use case`() {
+    val items = listOf(
+        Item(
+            id = 0,
+            name = "Orange",
+            price = 4
+        ),
+        Item(
+            id = 1,
+            name = "Milk",
+            price = 5
+        ),
+        Item(
+            id = 2,
+            name = "Expensive Potato",
+            price = 15
         )
+    )
 
-        val totalPrice = items
-            .map { it.price }
-            .reduce { acc, i -> acc + i }
+    val totalPrice = items
+        .map { it.price }
+        .reduce { acc, i -> acc + i }
 
-        println("Total Price :: $totalPrice") // prints Total Price :: 24
-    }
+    println("Total Price :: $totalPrice") // prints Total Price :: 24
+}
 ```
 
 <br/>
@@ -156,85 +149,90 @@ Before we send data to our API, we perform client side validation to rid of any 
 
 Our complex `user` model
 
-<br/>
-
 ```kotlin
-    data class UserModel(
-        val id: Int,
-        val name: String,
-        val email: String,
-        val zipCode: Int
-    )
+data class UserModel(
+    val id: Int,
+    val name: String,
+    val email: String,
+    val zipCode: Int
+)
 ```
 
 <br/>
 
 Our validators for a `user`
 
-<br/>
-
 ```kotlin
-    interface Validator {
-        fun isValid(user: UserModel): Boolean
-    }
+interface Validator {
+    fun isValid(user: UserModel): Boolean
+}
 
-    class EmailValidator : Validator {
-        override fun isValid(user: UserModel): Boolean {
-            return user.email.contains("@")
-        }
+class EmailValidator : Validator {
+    override fun isValid(user: UserModel): Boolean {
+        return user.email.contains("@")
     }
+}
 
-    class ZipCodeValidator : Validator {
-        override fun isValid(user: UserModel): Boolean {
-            return user.zipCode >= 10_000
-        }
+class ZipCodeValidator : Validator {
+    override fun isValid(user: UserModel): Boolean {
+        return user.zipCode >= 10_000
     }
+}
 ```
 
 <br/>
 
 And now lets run our validators on an invalid user
 
-<br/>
-
 ```kotlin
-    @Test
-    fun `fold use case`() {
-        val validators = listOf(
-            EmailValidator(),
-            ZipCodeValidator()
-        )
-        val userInvalid = UserModel(
-            id = 0,
-            name = "Kahani",
-            email = "kahani#me.com",
-            zipCode = 23_13
-        )
+@Test
+fun `fold use case`() {
+    val validators = listOf(
+        EmailValidator(),
+        ZipCodeValidator()
+    )
+    val userInvalid = UserModel(
+        id = 0,
+        name = "Kahani",
+        email = "kahani#me.com",
+        zipCode = 23_13
+    )
 
-        val isUserValid = validators.fold(true) { acc, validator ->
-            acc && validator.isValid(userInvalid)
-        }
-        println("UserValid :: $isUserValid") // prints UserValid :: false
+    val isUserValid = validators.fold(true) { acc, validator ->
+        acc && validator.isValid(userInvalid)
     }
+    println("UserValid :: $isUserValid") // prints UserValid :: false
+}
 ```
-
-<br/>
 
 The fold iterates through each iterator and flips to false if any validation check fails.
 
+<br/>
 
 ## Extra bytes
 
 <br/>
 
-* What if our Iterable is empty ?
+- **What if our Iterable is empty ?**
+
+<br/>
 
 In this case `reduce` will throw an exception as it does not know what to return, where as `fold` will simply return the initial value provided. The `reduceOrNull` function will return `null` if you run into a situation where it is unsure if the iterable will be empty or not.
+
+<br/>
+<br/>
 	
-* What if we want the current index throughout the iteration ?
+- **What if we want the current index throughout the iteration ?**
+
+<br/>
 
 `reduceIndexed` and `foldIndexed` provide a third variable, the index, to the lamda.
 
-* `runningReduce` and `runningFold`
+<br/>
+<br/>
+
+-  **`runningReduce` and `runningFold`**
+
+<br/>
 
 These functions work similar to `reduce` and `fold`, however instead of returning the accumulated value, it returns a list of values accumulated over each loop. When I find a better use case for this, I'll expand on it !
