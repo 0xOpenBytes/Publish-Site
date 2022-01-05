@@ -1,102 +1,102 @@
-<!DOCTYPE html><html lang="en"><head><script src="/disqus.js"></script></head><head><meta charset="UTF-8"/><meta name="og:site_name" content="0xOpenBytes"/><link rel="canonical" href="https://openbytes.dev/posts/reducefold"/><meta name="twitter:url" content="https://openbytes.dev/posts/reducefold"/><meta name="og:url" content="https://openbytes.dev/posts/reducefold"/><title>Reduce and Fold | 0xOpenBytes</title><meta name="twitter:title" content="Reduce and Fold | 0xOpenBytes"/><meta name="og:title" content="Reduce and Fold | 0xOpenBytes"/><meta name="description" content="An introduction to Kotlin's `reduce` and `fold` functions, along with some use cases."/><meta name="twitter:description" content="An introduction to Kotlin's `reduce` and `fold` functions, along with some use cases."/><meta name="og:description" content="An introduction to Kotlin's `reduce` and `fold` functions, along with some use cases."/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 0xOpenBytes"/><meta name="twitter:image" content="https://openbytes.dev/https://avatars.githubusercontent.com/u/92551192%3Fs=200&v=4"/><meta name="og:image" content="https://openbytes.dev/https://avatars.githubusercontent.com/u/92551192%3Fs=200&v=4"/></head><body class="item-page"><header><div class="wrapper"><a href="/" class="site-name">0xOpenBytes</a><nav><ul><li><a href="/posts" class="selected">Posts</a></li><li><a href="/about">About</a></li><li><a href="/projects">Projects</a></li><li><a href="/github">Github</a></li></ul></nav></div></header><div class="wrapper"><article><div class="content"><br/><h1>Reduce and Fold</h1><br/><p><code>reduce</code> and <code>fold</code> are functions for <code>Iterable</code> types in Kotlin that are used for accumulating values.</p><p>A simple example where we add numbers from 0 till 4. Typically we would write something like</p><br/><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-meta">@Test</span>
-    <span class="hljs-function"><span class="hljs-keyword">fun</span> `without`<span class="hljs-params">()</span></span> {
-        <span class="hljs-keyword">val</span> testList = (<span class="hljs-number">0</span> until <span class="hljs-number">5</span>).toList()
-        <span class="hljs-keyword">var</span> acc = <span class="hljs-number">0</span>
-        testList.forEach {
-            acc += it
-        }
-        println(<span class="hljs-string">"acc :: <span class="hljs-variable">$acc</span>"</span>) <span class="hljs-comment">// acc :: 10</span>
+<!DOCTYPE html><html lang="en"><head><script src="/disqus.js"></script></head><head><meta charset="UTF-8"/><meta name="og:site_name" content="0xOpenBytes"/><link rel="canonical" href="https://openbytes.dev/posts/reducefold"/><meta name="twitter:url" content="https://openbytes.dev/posts/reducefold"/><meta name="og:url" content="https://openbytes.dev/posts/reducefold"/><title>Reduce and Fold | 0xOpenBytes</title><meta name="twitter:title" content="Reduce and Fold | 0xOpenBytes"/><meta name="og:title" content="Reduce and Fold | 0xOpenBytes"/><meta name="description" content="An introduction to Kotlin's `reduce` and `fold` functions, along with some use cases."/><meta name="twitter:description" content="An introduction to Kotlin's `reduce` and `fold` functions, along with some use cases."/><meta name="og:description" content="An introduction to Kotlin's `reduce` and `fold` functions, along with some use cases."/><meta name="twitter:card" content="summary"/><link rel="stylesheet" href="/styles.css" type="text/css"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><link rel="shortcut icon" href="/images/favicon.png" type="image/png"/><link rel="alternate" href="/feed.rss" type="application/rss+xml" title="Subscribe to 0xOpenBytes"/><meta name="twitter:image" content="https://openbytes.dev/https://avatars.githubusercontent.com/u/92551192%3Fs=200&v=4"/><meta name="og:image" content="https://openbytes.dev/https://avatars.githubusercontent.com/u/92551192%3Fs=200&v=4"/></head><body class="item-page"><header><div class="wrapper"><a href="/" class="site-name">0xOpenBytes</a><nav><ul><li><a href="/posts" class="selected">Posts</a></li><li><a href="/about">About</a></li><li><a href="/projects">Projects</a></li><li><a href="/github">Github</a></li></ul></nav></div></header><div class="wrapper"><article><div class="content"><br/><h1>Reduce and Fold</h1><br/><p><code>reduce</code> and <code>fold</code> are functions for <code>Iterable</code> types in Kotlin that are used for accumulating values.</p><p>A simple example where we add numbers from 0 till 4. Typically we would write something like</p><br/><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">fun</span> `without`<span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">val</span> testList = (<span class="hljs-number">0</span> until <span class="hljs-number">5</span>).toList()
+    <span class="hljs-keyword">var</span> acc = <span class="hljs-number">0</span>
+    testList.forEach {
+        acc += it
     }
-</code></pre><br/><p>We maintain a variable <code>acc</code> that holds the accumulated value.</p><p><code>reduce</code> and <code>fold</code> functions provide both an accumulated value, along with the current value for the loop. In the following example, <code>acc</code> and <code>i</code> are these values respectively. Once the iteration is complete, these functions return the final accumulated value.</p><br/><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-meta">@Test</span>
-    <span class="hljs-function"><span class="hljs-keyword">fun</span> `simple demonstration`<span class="hljs-params">()</span></span> {
-        <span class="hljs-keyword">val</span> testList = (<span class="hljs-number">0</span> until <span class="hljs-number">5</span>).toList()
-        <span class="hljs-keyword">val</span> fold = testList.fold(<span class="hljs-number">0</span>) { acc, i -&gt;
-            acc + i
-        }
-        println(<span class="hljs-string">"Fold :: <span class="hljs-variable">$fold</span>"</span>) <span class="hljs-comment">// Fold :: 10</span>
-        <span class="hljs-keyword">val</span> reduce = testList.reduce { acc, i -&gt;
-            acc + i
-        }
-        println(<span class="hljs-string">"Reduce :: <span class="hljs-variable">$reduce</span>"</span>) <span class="hljs-comment">// Reduce :: 10</span>
+    println(<span class="hljs-string">"acc :: <span class="hljs-variable">$acc</span>"</span>) <span class="hljs-comment">// acc :: 10</span>
+}
+</code></pre><br/><p>We maintain a variable <code>acc</code> that holds the accumulated value.</p><p><code>reduce</code> and <code>fold</code> functions provide both an accumulated value, along with the current value for the loop. In the following example, <code>acc</code> and <code>i</code> are these values respectively. Once the iteration is complete, these functions return the final accumulated value.</p><br/><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">fun</span> `simple demonstration`<span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">val</span> testList = (<span class="hljs-number">0</span> until <span class="hljs-number">5</span>).toList()
+    <span class="hljs-keyword">val</span> fold = testList.fold(<span class="hljs-number">0</span>) { acc, i -&gt;
+        acc + i
     }
-</code></pre><br/><p>Similar, but only slightly.</p><br/><h2>Difference</h2><br/><p>Looking at our example, <code>reduce</code> does not explicitly provide a parameter to pass an initial value like <code>fold</code> does. It automatically uses the first item of the iterable type as the initial value.</p><p>But why separate these two, and where would you use one over the other ?</p><p><code>fold</code>'s initial value defines its return type, whereas <code>reduce</code> expects the accumulated value to remain of the same type as the iterable it is being applied to.</p><p>Let's say we wish to iterate over our <code>testList</code> containing the numbers 0 till 4, and simply return a string joining all these numbers. Using <code>fold</code> we could do something like</p><br/><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-meta">@Test</span>
-    <span class="hljs-function"><span class="hljs-keyword">fun</span> `types difference`<span class="hljs-params">()</span></span> {
-        <span class="hljs-keyword">val</span> testList = (<span class="hljs-number">0</span> until <span class="hljs-number">5</span>).toList()
-
-        <span class="hljs-keyword">val</span> fold = testList.fold(<span class="hljs-string">""</span>) { acc, i -&gt;
-            acc.plus(i)
-        }
-
-        println(fold)
+    println(<span class="hljs-string">"Fold :: <span class="hljs-variable">$fold</span>"</span>) <span class="hljs-comment">// Fold :: 10</span>
+    <span class="hljs-keyword">val</span> reduce = testList.reduce { acc, i -&gt;
+        acc + i
     }
-</code></pre><br/><p>where we provide an empty initial string as the first "accumulated" value, and our lamda appends the next number to the string.</p><p>Changing the return type would not be possible in <code>reduce</code></p><h2>Use case</h2><h3>reduce</h3><br/><p>A user can add multiple items to their basket when shopping, and we wish to display a running total of the price of these items.</p><p>An item is defined as ::</p><br/><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Item</span></span>(
-        <span class="hljs-keyword">val</span> id: <span class="hljs-built_in">Int</span>,
-        <span class="hljs-keyword">val</span> name: String,
-        <span class="hljs-keyword">val</span> price: <span class="hljs-built_in">Int</span>
-    )
-</code></pre><br/><p>And to generate the price of items for a given list ::</p><br/><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-meta">@Test</span>
-    <span class="hljs-function"><span class="hljs-keyword">fun</span> `reduce use case`<span class="hljs-params">()</span></span> {
-        <span class="hljs-keyword">val</span> items = listOf(
-            Item(
-                id = <span class="hljs-number">0</span>,
-                name = <span class="hljs-string">"Orange"</span>,
-                price = <span class="hljs-number">4</span>
-            ),
-            Item(
-                id = <span class="hljs-number">1</span>,
-                name = <span class="hljs-string">"Milk"</span>,
-                price = <span class="hljs-number">5</span>
-            ),
-            Item(
-                id = <span class="hljs-number">2</span>,
-                name = <span class="hljs-string">"Expensive Potato"</span>,
-                price = <span class="hljs-number">15</span>
-            )
-        )
+    println(<span class="hljs-string">"Reduce :: <span class="hljs-variable">$reduce</span>"</span>) <span class="hljs-comment">// Reduce :: 10</span>
+}
+</code></pre><br/><p>Similar, but only slightly.</p><br/><h2>Difference</h2><br/><p>Looking at our example, <code>reduce</code> does not explicitly provide a parameter to pass an initial value like <code>fold</code> does. It automatically uses the first item of the iterable type as the initial value.</p><p>But why separate these two, and where would you use one over the other ?</p><p><code>fold</code>'s initial value defines its return type, whereas <code>reduce</code> expects the accumulated value to remain of the same type as the iterable it is being applied to.</p><p>Let's say we wish to iterate over our <code>testList</code> containing the numbers 0 till 4, and simply return a string joining all these numbers. Using <code>fold</code> we could do something like</p><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">fun</span> `types difference`<span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">val</span> testList = (<span class="hljs-number">0</span> until <span class="hljs-number">5</span>).toList()
 
-        <span class="hljs-keyword">val</span> totalPrice = items
-            .map { it.price }
-            .reduce { acc, i -&gt; acc + i }
-
-        println(<span class="hljs-string">"Total Price :: <span class="hljs-variable">$totalPrice</span>"</span>) <span class="hljs-comment">// prints Total Price :: 24</span>
-    }
-</code></pre><br/><h3>fold</h3><br/><p>Before we send data to our API, we perform client side validation to rid of any basic missing information. The object is complex, so we've created separate validators, each with their own concern.</p><p>Our complex <code>user</code> model</p><br/><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserModel</span></span>(
-        <span class="hljs-keyword">val</span> id: <span class="hljs-built_in">Int</span>,
-        <span class="hljs-keyword">val</span> name: String,
-        <span class="hljs-keyword">val</span> email: String,
-        <span class="hljs-keyword">val</span> zipCode: <span class="hljs-built_in">Int</span>
-    )
-</code></pre><br/><p>Our validators for a <code>user</code></p><br/><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Validator</span> </span>{
-        <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">isValid</span><span class="hljs-params">(user: <span class="hljs-type">UserModel</span>)</span></span>: <span class="hljs-built_in">Boolean</span>
+    <span class="hljs-keyword">val</span> fold = testList.fold(<span class="hljs-string">""</span>) { acc, i -&gt;
+        acc.plus(i)
     }
 
-    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmailValidator</span> : <span class="hljs-type">Validator {</span></span>
-        <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">isValid</span><span class="hljs-params">(user: <span class="hljs-type">UserModel</span>)</span></span>: <span class="hljs-built_in">Boolean</span> {
-            <span class="hljs-keyword">return</span> user.email.contains(<span class="hljs-string">"@"</span>)
-        }
-    }
-
-    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ZipCodeValidator</span> : <span class="hljs-type">Validator {</span></span>
-        <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">isValid</span><span class="hljs-params">(user: <span class="hljs-type">UserModel</span>)</span></span>: <span class="hljs-built_in">Boolean</span> {
-            <span class="hljs-keyword">return</span> user.zipCode &gt;= <span class="hljs-number">10_000</span>
-        }
-    }
-</code></pre><br/><p>And now lets run our validators on an invalid user</p><br/><pre id=pre-kotlin data-language="kotlin" "><code>    <span class="hljs-meta">@Test</span>
-    <span class="hljs-function"><span class="hljs-keyword">fun</span> `fold use case`<span class="hljs-params">()</span></span> {
-        <span class="hljs-keyword">val</span> validators = listOf(
-            EmailValidator(),
-            ZipCodeValidator()
-        )
-        <span class="hljs-keyword">val</span> userInvalid = UserModel(
+    println(fold)
+}
+</code></pre><p>where we provide an empty initial string as the first "accumulated" value, and our lamda appends the next number to the string.</p><p><em>Changing the return type would not be possible in <code>reduce</code></em></p><br/><h2>Use case</h2><h3>reduce</h3><br/><p>A user can add multiple items to their basket when shopping, and we wish to display a running total of the price of these items.</p><p>An item is defined as ::</p><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Item</span></span>(
+    <span class="hljs-keyword">val</span> id: <span class="hljs-built_in">Int</span>,
+    <span class="hljs-keyword">val</span> name: String,
+    <span class="hljs-keyword">val</span> price: <span class="hljs-built_in">Int</span>
+)
+</code></pre><br/><p>And to generate the price of items for a given list ::</p><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">fun</span> `reduce use case`<span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">val</span> items = listOf(
+        Item(
             id = <span class="hljs-number">0</span>,
-            name = <span class="hljs-string">"Kahani"</span>,
-            email = <span class="hljs-string">"kahani#me.com"</span>,
-            zipCode = <span class="hljs-number">23_13</span>
+            name = <span class="hljs-string">"Orange"</span>,
+            price = <span class="hljs-number">4</span>
+        ),
+        Item(
+            id = <span class="hljs-number">1</span>,
+            name = <span class="hljs-string">"Milk"</span>,
+            price = <span class="hljs-number">5</span>
+        ),
+        Item(
+            id = <span class="hljs-number">2</span>,
+            name = <span class="hljs-string">"Expensive Potato"</span>,
+            price = <span class="hljs-number">15</span>
         )
+    )
 
-        <span class="hljs-keyword">val</span> isUserValid = validators.fold(<span class="hljs-literal">true</span>) { acc, validator -&gt;
-            acc &amp;&amp; validator.isValid(userInvalid)
-        }
-        println(<span class="hljs-string">"UserValid :: <span class="hljs-variable">$isUserValid</span>"</span>) <span class="hljs-comment">// prints UserValid :: false</span>
+    <span class="hljs-keyword">val</span> totalPrice = items
+        .map { it.price }
+        .reduce { acc, i -&gt; acc + i }
+
+    println(<span class="hljs-string">"Total Price :: <span class="hljs-variable">$totalPrice</span>"</span>) <span class="hljs-comment">// prints Total Price :: 24</span>
+}
+</code></pre><br/><h3>fold</h3><br/><p>Before we send data to our API, we perform client side validation to rid of any basic missing information. The object is complex, so we've created separate validators, each with their own concern.</p><p>Our complex <code>user</code> model</p><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-keyword">data</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">UserModel</span></span>(
+    <span class="hljs-keyword">val</span> id: <span class="hljs-built_in">Int</span>,
+    <span class="hljs-keyword">val</span> name: String,
+    <span class="hljs-keyword">val</span> email: String,
+    <span class="hljs-keyword">val</span> zipCode: <span class="hljs-built_in">Int</span>
+)
+</code></pre><br/><p>Our validators for a <code>user</code></p><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">Validator</span> </span>{
+    <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">isValid</span><span class="hljs-params">(user: <span class="hljs-type">UserModel</span>)</span></span>: <span class="hljs-built_in">Boolean</span>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EmailValidator</span> : <span class="hljs-type">Validator {</span></span>
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">isValid</span><span class="hljs-params">(user: <span class="hljs-type">UserModel</span>)</span></span>: <span class="hljs-built_in">Boolean</span> {
+        <span class="hljs-keyword">return</span> user.email.contains(<span class="hljs-string">"@"</span>)
     }
-</code></pre><br/><p>The fold iterates through each iterator and flips to false if any validation check fails.</p><h2>Extra bytes</h2><br/><ul><li>What if our Iterable is empty ?</li></ul><p>In this case <code>reduce</code> will throw an exception as it does not know what to return, where as <code>fold</code> will simply return the initial value provided. The <code>reduceOrNull</code> function will return <code>null</code> if you run into a situation where it is unsure if the iterable will be empty or not. * What if we want the current index throughout the iteration ?</p><p><code>reduceIndexed</code> and <code>foldIndexed</code> provide a third variable, the index, to the lamda.</p><ul><li><code>runningReduce</code> and <code>runningFold</code></li></ul><p>These functions work similar to <code>reduce</code> and <code>fold</code>, however instead of returning the accumulated value, it returns a list of values accumulated over each loop. When I find a better use case for this, I'll expand on it !</p></div><span>Tagged with: </span><ul class="tag-list"><li class="tag" id="tag-kotlin"><a href="/tags/kotlin">kotlin</a></li></ul><div id="disqus_thread"></div><noscript>Please enable JavaScript to view the comments</noscript></article></div><footer><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><p><a href="/feed.rss">RSS feed</a></p></footer></body></html>
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ZipCodeValidator</span> : <span class="hljs-type">Validator {</span></span>
+    <span class="hljs-keyword">override</span> <span class="hljs-function"><span class="hljs-keyword">fun</span> <span class="hljs-title">isValid</span><span class="hljs-params">(user: <span class="hljs-type">UserModel</span>)</span></span>: <span class="hljs-built_in">Boolean</span> {
+        <span class="hljs-keyword">return</span> user.zipCode &gt;= <span class="hljs-number">10_000</span>
+    }
+}
+</code></pre><br/><p>And now lets run our validators on an invalid user</p><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-meta">@Test</span>
+<span class="hljs-function"><span class="hljs-keyword">fun</span> `fold use case`<span class="hljs-params">()</span></span> {
+    <span class="hljs-keyword">val</span> validators = listOf(
+        EmailValidator(),
+        ZipCodeValidator()
+    )
+    <span class="hljs-keyword">val</span> userInvalid = UserModel(
+        id = <span class="hljs-number">0</span>,
+        name = <span class="hljs-string">"Kahani"</span>,
+        email = <span class="hljs-string">"kahani#me.com"</span>,
+        zipCode = <span class="hljs-number">23_13</span>
+    )
+
+    <span class="hljs-keyword">val</span> isUserValid = validators.fold(<span class="hljs-literal">true</span>) { acc, validator -&gt;
+        acc &amp;&amp; validator.isValid(userInvalid)
+    }
+    println(<span class="hljs-string">"UserValid :: <span class="hljs-variable">$isUserValid</span>"</span>) <span class="hljs-comment">// prints UserValid :: false</span>
+}
+</code></pre><p>The fold iterates through each iterator and flips to false if any validation check fails.</p><br/><h2>Extra bytes</h2><br/><ul><li><strong>What if our Iterable is empty ?</strong></li></ul><br/><p>In this case <code>reduce</code> will throw an exception as it does not know what to return, where as <code>fold</code> will simply return the initial value provided. The <code>reduceOrNull</code> function will return <code>null</code> if you run into a situation where it is unsure if the iterable will be empty or not.</p><br/><br/><ul><li><strong>What if we want the current index throughout the iteration ?</strong></li></ul><br/><p><code>reduceIndexed</code> and <code>foldIndexed</code> provide a third variable, the index, to the lamda.</p><br/><br/><ul><li><strong><code>runningReduce</code> and <code>runningFold</code></strong></li></ul><br/><p>These functions work similar to <code>reduce</code> and <code>fold</code>, however instead of returning the accumulated value, it returns a list of values accumulated over each loop. When I find a better use case for this, I'll expand on it !</p></div><span>Tagged with: </span><ul class="tag-list"><li class="tag" id="tag-kotlin"><a href="/tags/kotlin">kotlin</a></li></ul><div id="disqus_thread"></div><noscript>Please enable JavaScript to view the comments</noscript></article></div><footer><p>Generated using <a href="https://github.com/johnsundell/publish">Publish</a></p><p><a href="/feed.rss">RSS feed</a></p></footer></body></html>
