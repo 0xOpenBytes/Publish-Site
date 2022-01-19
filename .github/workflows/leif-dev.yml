@@ -26,6 +26,6 @@ jobs:
       with:
           deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
           publish_dir: ./Output
-          publish_branch: leif-dev
+          publish_branch: ${GITHUB_REF##*/}
           user_name: OpenBytes-Bot
           user_email: 0xOpenBytes@gmail.com
