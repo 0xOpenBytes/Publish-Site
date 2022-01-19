@@ -1,14 +1,10 @@
 #  GitHub
 
-<div>
-    <div style="float: left"></div>
-    <div style="align: center">
-        <a href="https://github.com/0xOpenBytes">
-            <img src="https://avatars.githubusercontent.com/u/92551192?s=200&v=4" width="256">
-        </a>
-        <p>0xOpenBytes</p>
-    </div>
-    <div style="float: right"></div>
+<div style="align: center">
+    <a href="https://github.com/0xOpenBytes">
+        <img src="https://avatars.githubusercontent.com/u/92551192?s=200&v=4" width="256">
+    </a>
+    <p>0xOpenBytes</p>
 </div>
 
 <div>
