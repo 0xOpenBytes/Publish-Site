@@ -21,7 +21,7 @@ struct OpenBytesSite: Website {
     // Update these properties to configure your website:
     var url = URL(string: "https://openbytes.dev")!
     var name = "0xOpenBytes"
-    var description = "Independent developers looking to help others learn and overcome the many obstacles software development has to offer."
+    var description = "Self-taught developers looking to help others learn and overcome the many obstacles software development has to offer. Focusing on Kotlin, Swift, and mobile development."
     var language: Language { .english }
     var imagePath: Path? { "https://avatars.githubusercontent.com/u/92551192?s=200&v=4" }
 }
