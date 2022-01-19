@@ -1,6 +1,6 @@
 #  GitHub
 
-*IMAGE-HERE*
+*IMAGE-HERE or quote*
 
 - [OpenBytes](https://github.com/0xOpenBytes)
 - [Parshav](https://github.com/parshav)
