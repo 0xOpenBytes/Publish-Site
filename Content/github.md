@@ -1,7 +1,13 @@
 #  GitHub
 
-*IMAGE-HERE or quote*
+<div>
+[OpenBytes](https://github.com/0xOpenBytes)
+</div>
 
-- [OpenBytes](https://github.com/0xOpenBytes)
-- [Parshav](https://github.com/parshav)
-- [Zach](https://github.com/0xLeif)
+<div style="display; inline-block">
+[Parshav](https://github.com/parshav)
+</div>
+
+<div style="display; inline-block">
+[Zach](https://github.com/0xLeif)
+</div>

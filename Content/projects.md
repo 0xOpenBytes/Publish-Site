@@ -1,6 +1,6 @@
 #  Projects
 
-*IMAGE or COOL QUOTE*
+*Open Source Projects*
 
 ## [ScreenData](https://github.com/ServerDriven)
 
