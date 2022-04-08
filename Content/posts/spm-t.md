@@ -86,7 +86,7 @@ t.suite {
 
 <br/>
 
-Using t.expect(...) we can make an expectation with one or multiple assertions. We can create variables and log messages too. The expectation will be true unless some error is thrown. The error might be thrown by an assertion or can be thrown manually too.
+Using `t.expect(...)` we can make an expectation with one or multiple assertions. We can create variables and log messages too. **The expectation will be true unless some error is thrown.** The error might be thrown by an assertion or can be thrown manually too.
 
 <br/>
 
@@ -213,4 +213,4 @@ XCTAssertNoThrow(
 
 <br/>
 
-[⬆️ Back to the Top](/posts/spm-closure/)
+[⬆️ Back to the Top](/posts/spm-t/)
