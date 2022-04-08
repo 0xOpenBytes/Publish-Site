@@ -28,7 +28,7 @@ Using `t.suite(...)` you can create a test suite that will return false if any e
 
 <br/>
 
-Example Test Suite
+**Example Test Suite**
 
 <br/>
 
