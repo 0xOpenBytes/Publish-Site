@@ -3,7 +3,7 @@ date: 2022-02-2 20:22
 description: 🧪 Quickly test expectations
 tags: swift, spm, testing
 ---
-# Testing code with t SPM 📦
+# Testing code with `t` SPM 📦
 🔗
 *[Check out t](https://github.com/0xOpenBytes/t)*
 
