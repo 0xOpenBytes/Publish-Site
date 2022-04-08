@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>0xOpenBytes</title><description>Self-taught mobile developers looking to help others learn and overcome the many obstacles software development has to offer. Focusing on Kotlin, Swift, and mobile development.</description><link>https://openbytes.dev</link><language>en</language><lastBuildDate>Mon, 7 Feb 2022 19:31:54 +0000</lastBuildDate><pubDate>Mon, 7 Feb 2022 19:31:54 +0000</pubDate><ttl>250</ttl><atom:link href="https://openbytes.dev/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://openbytes.dev/posts/spm-t</guid><title>Testing code with t SPM 📦</title><description>🧪 Quickly test expectations</description><link>https://openbytes.dev/posts/spm-t</link><pubDate>Wed, 2 Feb 2022 20:22:00 +0000</pubDate><content:encoded><![CDATA[<h1>Testing code with <code>t</code> SPM 📦</h1><p>🔗 <a href="https://github.com/0xOpenBytes/t"><em>Check out t</em></a></p><br/><pre id=pre-shell data-language="shell" "><code>git clone git@github.com:0xOpenBytes/t.git
-</code></pre><br/><h2>What is <code>t</code>?</h2><p><code>t</code> is a simple testing framework using closures and errors. You have the ability to create a suite that has multiple steps, expectations, and asserts. Expectations can be used to expect one or multiple assertions. It can be used to test quickly inside a function to make sure something is working as expected. <code>t</code> can also be used in unit test if wanted.</p><br/><br/><h3>Creating a Test Suite</h3><br/><p>Using <code>t.suite(...)</code> you can create a test suite that will return false if any error is thrown. Test suites contains multiple steps, expectations, assertions, and even test suites. All logging will use <code>t.logger</code>, which defaults to <code>print(...)</code>.</p><br/><h4>Example Test Suite</h4><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-comment">// Create Test Suite</span>
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>0xOpenBytes</title><description>Self-taught mobile developers looking to help others learn and overcome the many obstacles software development has to offer. Focusing on Kotlin, Swift, and mobile development.</description><link>https://openbytes.dev</link><language>en</language><lastBuildDate>Fri, 8 Apr 2022 01:02:37 +0000</lastBuildDate><pubDate>Fri, 8 Apr 2022 01:02:37 +0000</pubDate><ttl>250</ttl><atom:link href="https://openbytes.dev/feed.rss" rel="self" type="application/rss+xml"/><item><guid isPermaLink="true">https://openbytes.dev/posts/spm-t</guid><title>Testing code with t SPM 📦</title><description>🧪 Quickly test expectations</description><link>https://openbytes.dev/posts/spm-t</link><pubDate>Wed, 2 Feb 2022 20:22:00 +0000</pubDate><content:encoded><![CDATA[<h1>Testing code with <code>t</code> SPM 📦</h1><p>🔗 <em><a href="https://github.com/0xOpenBytes/t">Check out t</a></em></p><br/><pre id=pre-shell data-language="shell" "><code>git clone git@github.com:0xOpenBytes/t.git
+</code></pre><br/><h2>What is <code>t</code>?</h2><p><code>t</code> is a simple testing framework using closures and errors. You have the ability to create a suite that has multiple steps, expectations, and asserts. Expectations can be used to expect one or multiple assertions. It can be used to test quickly inside a function to make sure something is working as expected. <code>t</code> can also be used in unit test if wanted.</p><br/><br/><h3>Creating a Test Suite</h3><br/><p>Using <code>t.suite(...)</code> you can create a test suite that will return false if any error is thrown. Test suites contains multiple steps, expectations, assertions, and even test suites. All logging will use <code>t.logger</code>, which defaults to <code>print(...)</code>.</p><br/><p><strong>Example Test Suite</strong></p><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-comment">// Create Test Suite</span>
 t.suite {
     <span class="hljs-comment">// Add an expectation that asserting true is true and that 2 is equal to 2</span>
     <span class="hljs-keyword">try</span> t.expect {
@@ -27,7 +27,7 @@ t.suite {
     <span class="hljs-keyword">let</span> someOtherValue: <span class="hljs-type">String?</span> = <span class="hljs-string">"💠"</span>
     <span class="hljs-keyword">try</span> t.<span class="hljs-built_in">assert</span>(isNotNil: someOtherValue)
 }
-</code></pre><br/><h4>Example Test Suite Output</h4><br/><pre id=pre-undefined data-language="undefined" "><code>
+</code></pre><br/><p><strong>Example Test Suite Output</strong></p><br/><pre id=pre-undefined data-language="undefined" "><code>
 🧪 Testing Suite
 🔘 Expecting something to be true
 📣 Test Log Message
@@ -37,14 +37,14 @@ t.suite {
     Line: 25
 )
 ✅ Suite Passed!
-</code></pre><br/><h3>Making Expectations</h3><br/><p>Using <code>t.expect(...)</code> we can make an expectation with one or multiple assertions. We can create variables and log messages too. <strong>The expectation will be true unless some error is thrown.</strong> The error might be thrown by an assertion or can be thrown manually too.</p><br/><h4>Example Expectation</h4><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-keyword">try</span> t.expect(<span class="hljs-string">"true is true and that 2 is equal to 2"</span>) {
+</code></pre><br/><h3>Making Expectations</h3><br/><p>Using <code>t.expect(...)</code> we can make an expectation with one or multiple assertions. We can create variables and log messages too. <strong>The expectation will be true unless some error is thrown.</strong> The error might be thrown by an assertion or can be thrown manually too.</p><br/><p><strong>Example Expectation</strong></p><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-keyword">try</span> t.expect(<span class="hljs-string">"true is true and that 2 is equal to 2"</span>) {
     <span class="hljs-keyword">try</span> t.<span class="hljs-built_in">assert</span>(<span class="hljs-literal">true</span>)
     <span class="hljs-keyword">try</span> t.<span class="hljs-built_in">assert</span>(<span class="hljs-number">2</span>, isEqualTo: <span class="hljs-number">2</span>)
 }
-</code></pre><br/><h4>Example Expectation Output</h4><br/><pre id=pre-undefined data-language="undefined" "><code>
+</code></pre><br/><p><strong>Example Expectation Output</strong></p><br/><pre id=pre-undefined data-language="undefined" "><code>
 🔘 Expecting true is true and that 2 is equal to 2
-</code></pre><br/><h3>Making an Assertion</h3><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-keyword">try</span> t.<span class="hljs-built_in">assert</span>(<span class="hljs-string">"Hello"</span>, isNotEqualTo: <span class="hljs-string">"World"</span>)
-</code></pre><br/><h3>Logging Information</h3><br/><p>Test suite information is automatically logged using <code>t.logger</code>. The logger is a static variable of type <code>(String) -&gt; Void</code> which has a default value of <code>{ print($0) }</code>. Feel free to supply your own logging function. Manual logging should use <code>t.log(String)</code> or <code>t.log(error: Error)</code>.</p><br/><h4>Example Manual Logging</h4><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-comment">// Log a message</span>
+</code></pre><br/><p><strong>Making an Assertion</strong></p><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-keyword">try</span> t.<span class="hljs-built_in">assert</span>(<span class="hljs-string">"Hello"</span>, isNotEqualTo: <span class="hljs-string">"World"</span>)
+</code></pre><br/><h3>Logging Information</h3><br/><p>Test suite information is automatically logged using <code>t.logger</code>. The logger is a static variable of type <code>(String) -&gt; Void</code> which has a default value of <code>{ print($0) }</code>. Feel free to supply your own logging function. Manual logging should use <code>t.log(String)</code> or <code>t.log(error: Error)</code>.</p><br/><p><strong>Example Manual Logging</strong></p><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-comment">// Log a message</span>
 t.log(<span class="hljs-string">"📣 Test Log Message"</span>)
 
 <span class="hljs-comment">// Log a t.error</span>
@@ -53,28 +53,28 @@ t.log(error: t.error(description: <span class="hljs-string">"Mock Error"</span>)
 <span class="hljs-comment">// Log any error</span>
 <span class="hljs-class"><span class="hljs-keyword">struct</span> <span class="hljs-title">SomeError</span>: <span class="hljs-title">Error</span> </span>{ }
 t.log(error: <span class="hljs-type">SomeError</span>())
-</code></pre><br/><h4>Quick Testing</h4><br/><pre id=pre-swift data-language="swift" "><code>t.suite {
+</code></pre><br/><p><strong>Quick Testing</strong></p><br/><pre id=pre-swift data-language="swift" "><code>t.suite {
     <span class="hljs-keyword">try</span> t.expect {
         <span class="hljs-keyword">let</span> expectedValue = ...
         <span class="hljs-keyword">let</span> value = function()
         <span class="hljs-keyword">try</span> t.<span class="hljs-built_in">assert</span>(value, isEqualTo: expectedValue)
     }
 }
-</code></pre><br/><h4>Unit Tests</h4><br/><h5>XCTAssert Test Suite</h5><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-type">XCTAssert</span>(
+</code></pre><br/><p><strong>Unit Tests</strong></p><br/><p><strong>XCTAssert Test Suite</strong></p><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-type">XCTAssert</span>(
     t.suite {
         <span class="hljs-comment">// ...</span>
     }
 )
-</code></pre><br/><h5>XCTAssertNoThrow Expectation</h5><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-type">XCTAssertNoThrow</span>(
+</code></pre><br/><p><strong>XCTAssertNoThrow Expectation</strong></p><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-type">XCTAssertNoThrow</span>(
     <span class="hljs-keyword">try</span> t.expect(<span class="hljs-string">"true is true and that 2 is equal to 2"</span>) {
         <span class="hljs-keyword">try</span> t.<span class="hljs-built_in">assert</span>(<span class="hljs-literal">true</span>)
         <span class="hljs-keyword">try</span> t.<span class="hljs-built_in">assert</span>(<span class="hljs-number">2</span>, isEqualTo: <span class="hljs-number">2</span>)
     }
 )
-</code></pre><br/><h5>XCTAssertNoThrow Assert</h5><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-type">XCTAssertNoThrow</span>(
+</code></pre><br/><p><strong>XCTAssertNoThrow Assert</strong></p><br/><pre id=pre-swift data-language="swift" "><code><span class="hljs-type">XCTAssertNoThrow</span>(
     <span class="hljs-keyword">try</span> t.<span class="hljs-built_in">assert</span>(<span class="hljs-literal">true</span>)
 )
-</code></pre><br/><br/><p>⬆️ <a href="https://openbytes.dev/posts/spm-closure/">Back to the Top</a></p>]]></content:encoded></item><item><guid isPermaLink="true">https://openbytes.dev/posts/kotlin-infix</guid><title>Kotlin infix notation</title><description>Kotlin infix</description><link>https://openbytes.dev/posts/kotlin-infix</link><pubDate>Fri, 24 Dec 2021 20:24:00 +0000</pubDate><content:encoded><![CDATA[<h1>Kotlin infix notation</h1><h3>What does it do</h3><br/><p>The <code>infix</code> keyword can be applied to kotlin functions. This simply allows it to be called without requiring parenthesis for its parameter.</p><br/><p>Here's a small example with a <code>Player</code> that can hold a <code>card</code> at any given time. The player can <code>swapCard</code> if the other card's value is greater than the one they hold. We apply the <code>infix</code> notation to the <code>swapCard</code> function.</p><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Player</span></span>(card: Card) {
+</code></pre><br/><br/><p><a href="https://openbytes.dev/posts/spm-t/">⬆️ Back to the Top</a></p>]]></content:encoded></item><item><guid isPermaLink="true">https://openbytes.dev/posts/kotlin-infix</guid><title>Kotlin infix notation</title><description>Kotlin infix</description><link>https://openbytes.dev/posts/kotlin-infix</link><pubDate>Fri, 24 Dec 2021 20:24:00 +0000</pubDate><content:encoded><![CDATA[<h1>Kotlin infix notation</h1><h3>What does it do</h3><br/><p>The <code>infix</code> keyword can be applied to kotlin functions. This simply allows it to be called without requiring parenthesis for its parameter.</p><br/><p>Here's a small example with a <code>Player</code> that can hold a <code>card</code> at any given time. The player can <code>swapCard</code> if the other card's value is greater than the one they hold. We apply the <code>infix</code> notation to the <code>swapCard</code> function.</p><pre id=pre-kotlin data-language="kotlin" "><code><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Player</span></span>(card: Card) {
 
     <span class="hljs-keyword">var</span> card: Card = card
         <span class="hljs-keyword">private</span> <span class="hljs-keyword">set</span>
