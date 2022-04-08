@@ -4,8 +4,8 @@ description: 🧪 Quickly test expectations
 tags: swift, spm, testing
 ---
 # Testing code with `t` SPM 📦
-
-🔗 [_Check out t_](https://github.com/0xOpenBytes/t)
+🔗
+*[Check out t](https://github.com/0xOpenBytes/t)*
 
 <br/>
 
@@ -16,11 +16,9 @@ git clone git@github.com:0xOpenBytes/t.git
 <br/>
 
 ## What is `t`?
-
 `t` is a simple testing framework using closures and errors. You have the ability to create a suite that has multiple steps, expectations, and asserts. Expectations can be used to expect one or multiple assertions. It can be used to test quickly inside a function to make sure something is working as expected. `t` can also be used in unit test if wanted.
 
-<br/>
-<br/>
+<br/><br/>
 
 ### Creating a Test Suite
 
@@ -30,7 +28,7 @@ Using `t.suite(...)` you can create a test suite that will return false if any e
 
 <br/>
 
-#### Example Test Suite
+**Example Test Suite**
 
 <br/>
 
@@ -67,7 +65,7 @@ t.suite {
 
 <br/>
 
-#### Example Test Suite Output
+**Example Test Suite Output**
 
 <br/>
 
@@ -93,7 +91,7 @@ Using `t.expect(...)` we can make an expectation with one or multiple assertions
 
 <br/>
 
-#### Example Expectation
+**Example Expectation**
 
 <br/>
 
@@ -106,7 +104,7 @@ try t.expect("true is true and that 2 is equal to 2") {
 
 <br/>
 
-#### Example Expectation Output
+**Example Expectation Output**
 
 <br/>
 
@@ -116,7 +114,7 @@ try t.expect("true is true and that 2 is equal to 2") {
 
 <br/>
 
-### Making an Assertion
+**Making an Assertion**
 
 <br/>
 
@@ -134,7 +132,7 @@ Test suite information is automatically logged using `t.logger`. The logger is a
 
 <br/>
 
-#### Example Manual Logging
+**Example Manual Logging**
 
 <br/>
 
@@ -152,7 +150,7 @@ t.log(error: SomeError())
 
 <br/>
 
-#### Quick Testing
+**Quick Testing**
 
 <br/>
 
@@ -168,11 +166,11 @@ t.suite {
 
 <br/>
 
-#### Unit Tests
+**Unit Tests**
 
 <br/>
 
-##### XCTAssert Test Suite
+**XCTAssert Test Suite**
 
 <br/>
 
@@ -186,7 +184,7 @@ XCTAssert(
 
 <br/>
 
-##### XCTAssertNoThrow Expectation
+**XCTAssertNoThrow Expectation**
 
 <br/>
 
@@ -201,7 +199,7 @@ XCTAssertNoThrow(
 
 <br/>
 
-##### XCTAssertNoThrow Assert
+**XCTAssertNoThrow Assert**
 
 <br/>
 
@@ -213,6 +211,7 @@ XCTAssertNoThrow(
 
 <br/>
 
+
 <br/>
 
-⬆️ [Back to the Top](/posts/spm-closure/)
+[⬆️ Back to the Top](/posts/spm-t/)
