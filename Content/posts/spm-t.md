@@ -4,7 +4,8 @@ description: 🧪 Quickly test expectations
 tags: swift, spm, testing
 ---
 # Testing code with t SPM 📦
-*[🔗 Check out t](https://github.com/0xOpenBytes/t)*
+🔗
+*[Check out t](https://github.com/0xOpenBytes/t)*
 
 <br/>
 
