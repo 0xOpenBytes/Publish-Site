@@ -16,6 +16,7 @@ jobs:
       run: |
         git clone https://github.com/JohnSundell/Publish.git
         cd Publish
+        git checkout 0.8.0
         make
 
     - name: Generate Site
