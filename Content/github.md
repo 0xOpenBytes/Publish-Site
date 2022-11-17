@@ -9,24 +9,11 @@
 ## Members
 
 <br/>
-  
-<table>
-  <tr>
-    <td>Parshav</td>
-    <td><br/></td>
-    <td>
-        <a href="https://github.com/parshav">
-            <img src="https://avatars.githubusercontent.com/u/7420011?v=4" width="60">
-        </a>
-    </td>
-  </tr>
-  <tr>
-    <td>0xLeif</td>
-    <td><br/></td>
-    <td>
-        <a href="https://github.com/0xLeif">
-            <img src="https://avatars.githubusercontent.com/u/8268288?v=4" width="60">
-        </a>
-    </td>
-  </tr>
-</table>
+
+<!-- members -->
+<a href="https://github.com/parshav"><img src="https://github.com/parshav.png" width="60px" alt="Parshav" />
+<a href="https://github.com/0xLeif"><img src="https://github.com/0xLeif.png" width="60px" alt="0xLeif" />
+<a href="https://github.com/haIIux"><img src="https://github.com/haIIux.png" width="60px" alt="haIIux" />
+<a href="https://github.com/rjp2525"><img src="https://github.com/rjp2525.png" width="60px" alt="Reno" />
+<a href="https://github.com/FullQueueDeveloper"><img src="https://github.com/FullQueueDeveloper.png" width="60px" alt="Full Queue Developer" />
+<!-- members -->
