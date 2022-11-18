@@ -13,6 +13,8 @@
 #pre-kotlin { border-color: #7c53ec; }
 /* End of Code Block Border Colors */
 
+#circle-avatar { clip-path: circle(30px at 30px -16px); }
+
 /* End of OpenBytes CSS */
 
 /**
