@@ -60,9 +60,6 @@ struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
     ) throws -> HTML {
         HTML(
             .lang(context.site.language),
-            .head(
-                .script(.src("/disqus.js"))
-            ),
             .head(for: item, on: context.site),
             .body(
                 .class("item-page"),
@@ -73,10 +70,6 @@ struct OpenBytesHTMLFactory<Site: Website>: HTMLFactory {
                             Div(item.content.body).class("content")
                             Span("Tagged with: ")
                             ItemTagList(item: item, site: context.site)
-                            Div().id("disqus_thread")
-                            Element(name: "noscript") {
-                                Text("Please enable JavaScript to view the comments")
-                            }
                         }
                     }
                     SiteFooter()
