@@ -14,7 +14,7 @@ Swift Charts is a powerful and user-friendly library for creating beautiful and 
 ![Image of a chart displayed on an iPhone which is on a desk](https://miro.medium.com/max/1400/1*eBbVaymJUGsTIyRsfv_xbg.webp)
 
 ### Great, so how do I implement it?
-Within the view in which you'd like to display your Chart, simply import the charts librarly.
+Within the view in which you'd like to display a chart, simply import the Charts library.
 
 ```swift
 import Charts
@@ -43,7 +43,7 @@ struct ChartView: View {
 
 ```
 <br/>
-Your data set will need to conform to [Random Access Collection](https://developer.apple.com/documentation/swift/randomaccesscollection) and be [Identifiable](https://developer.apple.com/documentation/swift/identifiable). For instance, you could create a model for an object you want to represent data for, and then create an array of that model. If your model does not conform to Identifiable, you could get away with simply adding `id: \.self` within the ForEach parameters.
+Your data set will need to conform to [Random Access Collection](https://developer.apple.com/documentation/swift/randomaccesscollection) and [Identifiable](https://developer.apple.com/documentation/swift/identifiable). For instance, you could create a model for an object you want to represent data for, and then create an array of that model. If your model does not conform to `Identifiable`, you could get away with simply adding `id: \.self` within the `ForEach` parameters.
 
 <br/>
 As you can see within the XAxis, there is an added parameter called `value`. If your data model has a variable you're using within your chart that is of type `Date`, Swift will automatically infer that you're looking to select a `DateComponent` to set as the value. Which means, you will be able to narrow your data set down to any `DateComponent`.
@@ -54,4 +54,4 @@ As you can see within the XAxis, there is an added parameter called `value`. If 
 As simple as that, we have drawn out a very basic implementation of a Bar Chart. From here, we can work on customizing them to our liking using simple view modifiers provided by the library. In the next article on Swift Charts, I'll detail how I obtained the above visual design.
 
 <br/>
-In conclusion, Apple did a great job with this framework as it is incredibly intuitive. It provies developers with a very easy way to implement beautiful adaptive graphics to represent various types of data. Unfortunately, the one big chart missing is a Pie Chart… However, after speaking with the Apple Evangelists during one of the WWDC22 Slack Sessions they do have plans to implement them in the future.
+In conclusion, Apple did a great job with this framework as it is incredibly intuitive. It provides developers with a very easy way to implement beautiful adaptive graphics to represent various types of data. Unfortunately, the one chart that is missing from our toolbox is the Pie Chart. After speaking with Apple evangelists during one of the WWDC22 Slack Sessions they do have plans to implement them in the future.
