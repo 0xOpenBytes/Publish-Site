@@ -4,7 +4,7 @@ description: An Introduction into Swift Charts
 tags: swift, charts, ios, swiftui
 ---
 
-# An Introduction into Swift Charts
+## An Introduction into Swift Charts
 
 ### A barebones no frills introduction to displaying the most basic of charts, a Bar Chart.
 
