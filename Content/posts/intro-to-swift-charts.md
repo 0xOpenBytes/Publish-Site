@@ -14,7 +14,7 @@ Swift Charts is a powerful and user-friendly library for creating beautiful and 
 
 <br/>
 
-![Image of a chart displayed on an iPhone which is on a desk](https://miro.medium.com/max/1400/1*eBbVaymJUGsTIyRsfv_xbg.webp)
+<img src="https://miro.medium.com/max/1400/1*eBbVaymJUGsTIyRsfv_xbg.webp" alt="Image of a chart displayed on an iPhone which is on a desk" width="100%"/>
 
 ## Great, so how do I implement it?
 Within the view in which you'd like to display a chart, simply import the Charts library.
@@ -53,7 +53,7 @@ Your data set will need to conform to [Random Access Collection](https://develop
 
 As you can see within the XAxis, there is an added parameter called `value`. If your data model has a variable you're using within your chart that is of type `Date`, Swift will automatically infer that you're looking to select a `DateComponent` to set as the value. Which means, you will be able to narrow your data set down to any `DateComponent`.
 
-![Basic bar chart](https://miro.medium.com/max/1400/1*USmHHa9QdYLbX75xmqRK_w.webp)
+<img src="https://miro.medium.com/max/1400/1*USmHHa9QdYLbX75xmqRK_w.webp" alt="Basic bar chart" width="100%"/>
 
 <br/>
 
